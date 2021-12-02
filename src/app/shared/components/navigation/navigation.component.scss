@@ -1,0 +1,31 @@
+:host{
+    height: 100vh;
+}
+
+.navbar-default {
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .075);
+    border: none;
+    margin-bottom: 0;
+    padding: 10px;
+    height: 100%;
+}
+
+.navbar-default .navbar-brand {
+    color: #393939;
+    font-weight: 500;
+}
+
+.navbar-default .navbar-nav li a {
+    color: #555555;
+    font-size: 12px;
+    font-weight: 500;
+    padding-right: 20px;
+    padding-left: 20px;
+    -webkit-transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.4s;
+}
+
+.navbar-default .navbar-nav>li a:hover {
+    color: #393939 !important;
+}
