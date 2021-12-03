@@ -1,6 +1,11 @@
+:host{
+    order: 0;
+    height: 20%;
+}
+
 footer {
-    padding-top: 80px;
-    padding-bottom: 40px;
+    position: fixed;
+    width: 100%;
 }
 
 footer h4 {
