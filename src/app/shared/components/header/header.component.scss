@@ -1,36 +1,39 @@
+:host{
+    order: 2;
+    height: auto;
+}
+
 header {
     background: #ffffff;
     border-bottom: 1px solid #f2f2f2;
     display: flex;
-    height: 45px;
+    height: auto;
 }
 
-.header-icons {
-    padding-right: 0;
+.brand{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin-left: 5px;
+    >span {
+        color: #393939;
+        font-family: Quicksand;
+        font-weight: 500;
+        font-size: 40px;
+    }
 }
 
-header p,
-header span {
-    font-size: 12px;
-    line-height: 24px;
-    padding-top: 12px;
+.content-right{
+    display: flex;
+    flex-flow: row;
+    justify-content: right;
+    align-items: center;
 }
 
-header p,
-header a,
-header span {
-    color: #747474;
+.afterIcon{
+    padding-left: 5px;
 }
 
-header span {
-    font-weight: 500;
-    display: inline-block;
-    padding: 11px 15px;
-}
-
-header span.header-date-icon {
-    border-left: 1px solid #f2f2f2;
-    border-right: 1px solid #f2f2f2;
-    padding-right: 19px;
-    padding-left: 19px;
+.headerText>i, .headerText>span{
+    font-size: 20px;
 }
