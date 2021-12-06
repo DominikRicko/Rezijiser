@@ -1,10 +1,9 @@
 :host{
     order: 0;
-    height: auto;
+    height: 50px;
 }
 
 footer {
-    //position: fixed;
     width: 100%;
     padding: 10px;
 }
@@ -21,22 +20,16 @@ footer a:hover {
     color: #4267b2;
 }
 
-.copyright-text p,
+.copyright-text span,
 .footer-link a {
     color: #858585;
     font-size: 12px;
     font-weight: 500;
 }
 
-.footer-link a {
-    font-size: 12px;
-    display: inline-block;
-    padding: 0 10px;
-    margin-top: 4px;
-}
-
-.footer-links {
-    margin-top: 30px;
+.copyright-text{
+    display: flex;
+    justify-content: center;
 }
 
 .footer-copyright {

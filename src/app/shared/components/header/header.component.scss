@@ -8,13 +8,20 @@ header {
     border-bottom: 1px solid #f2f2f2;
     display: flex;
     height: auto;
+
+    &.float{
+        display: flex;
+        align-items: center;
+    }
+
 }
 
 .brand{
     display: flex;
+    float: left;
     align-items: center;
     align-content: center;
-    margin-left: 5px;
+    margin-left: 10px;
     >span {
         color: #393939;
         font-family: Quicksand;
@@ -23,11 +30,11 @@ header {
     }
 }
 
-.content-right{
-    display: flex;
-    flex-flow: row;
-    justify-content: right;
+.logout{
+    margin-left: 10px;
+    margin-right: 15px;
     align-items: center;
+    align-content: center;
 }
 
 .afterIcon{
@@ -36,4 +43,21 @@ header {
 
 .headerText>i, .headerText>span{
     font-size: 20px;
+}
+
+div.divider{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.notifications{
+    margin-left: 15px;
+    margin-bottom: 10px;
+    height: 20px;
+    font-size: 20px;
+    width: fit-content;
+}
+
+div.notifications:hover{
+    cursor: pointer;
 }

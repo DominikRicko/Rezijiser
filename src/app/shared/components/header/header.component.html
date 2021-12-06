@@ -1,14 +1,19 @@
-<header>
-    <div class="container-fluid row">
+<header class="float">
+    <a role="link" routerLink='/' class="brand">
+        <i class="icon app"></i>
+        <span>Rezijiser</span>
+    </a>
 
-        <div class="col-md-4">
-            <a role="link" routerLink='/' class="brand"><i class="icon app"></i><span>Rezijiser</span></a>
-        </div>
+    <div class="divider"></div>
 
-        <div class="col-md-8 content-right" >
-            <a role="link" routerLink='/logout' class="headerText"><i class="fa fa-sign-out"></i><span class="afterIcon">Logout</span></a>
-        </div>
-
+    <div class="notifications">
+        <i class="fa fa-envelope"></i>
     </div>
+
+    <div class="headerText logout">
+        <i class="fa fa-user"></i>
+        <span class="afterIcon">Ime Prezime</span>
+    </div>
+
 
 </header>
