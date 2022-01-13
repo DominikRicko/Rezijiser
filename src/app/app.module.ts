@@ -16,6 +16,17 @@ import { DetailModule } from './detail/detail.module';
 
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
+import {RegisterModule} from './register/register.module';
+import {AuthGuard} from './_helpers/auth.guard';
+import {CommunalModule} from './communal/communal.module';
+import {GasModule} from './gas/gas.module';
+import {HrtModule} from './hrt/hrt.module';
+import {PowerModule} from './power/power.module';
+import {ReservationModule} from './reservation/reservation.module';
+import {SettingsModule} from './settings/settings.module';
+import {TelecommunicationModule} from './telecommunication/telecommunication.module';
+import {TrashModule} from './trash/trash.module';
+import {WaterModule} from './water/water.module';
 
 // AoT requires an exported function for factories
 const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,6 +42,16 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     HomeModule,
     DetailModule,
     LoginModule,
+    RegisterModule,
+    CommunalModule,
+    GasModule,
+    HrtModule,
+    PowerModule,
+    ReservationModule,
+    SettingsModule,
+    TelecommunicationModule,
+    TrashModule,
+    WaterModule,
     AppRoutingModule,
     TranslateModule.forRoot({
       loader: {
@@ -40,7 +61,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
       }
     })
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,27 +1,76 @@
-<section class="section-admin-login">
-
-    <form class="login-container admin-form" method="post" action="./login/validate-login.php">
-        <h1 aria-readonly="true">Sign in</h1>
-        <div class="admin-icon">
-            <a role="link" href="#"><i class="fa fa-key" aria-hidden="true"></i></a>
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          #email="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && email.invalid"
+        >
+          Username is required!
         </div>
-        <span class="admin-panel">Admin panel</span>
-        <input role="input" class="admin-input" type="email" name="email" placeholder="Email" />
-        <input role="input" class="admin-input" type="password" name="password" placeholder="Password" />
-        <a role="link" href="./reset-password.php">Forgot your password?</a>
-        <button type="submit" role="button" aria-pressed="false" class="admin-button">Sign In</button>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Login
+        </button>
+        <button (click)="register()" class="btn btn-secondary btn-block">
+          Register
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
     </form>
 
-    <div class="admin-home-container">
-        <div class="admin-home">
-            <div class="admin-home-panel">
-                <h1 aria-readonly="true">Hello, Admin!</h1>
-                <p aria-readonly="true">Enter your login data and start journey with us or just back home</p>
-                <form method="post" action="index.php">
-                    <button role="button" aria-pressed="false" class="admin-button admin-home-button">Home</button>
-                </form>
-            </div>
-        </div>
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Logged in as {{ user.name }} {{ user.surname }}.
+      <button (click)="signOut()" class="btn btn-primary btn-block">
+        Logout
+      </button>
     </div>
-
-</section>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <header class="float">
-    <a role="link" routerLink='/' class="brand">
+    <a role="link" routerLink='/home' class="brand">
         <i class="icon app"></i>
         <span>Rezijiser</span>
     </a>
@@ -12,8 +12,6 @@
 
     <div class="headerText logout">
         <i class="fa fa-user"></i>
-        <span class="afterIcon">Ime Prezime</span>
+      <span class="afterIcon">{{ user.name }} {{ user.surname }}</span>
     </div>
-
-
 </header>
