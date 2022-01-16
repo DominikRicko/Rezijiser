@@ -14,7 +14,8 @@ import {TrashRoutingModule} from './trash/trash-routing.module';
 import {CommunalRoutingModule} from './communal/communal-routing.module';
 import {HrtRoutingModule} from './hrt/hrt-routing.module';
 import {TelecommunicationRoutingModule} from './telecommunication/telecommunication-routing.module';
-import {SettingsRoutingModule} from './settings/settings-routing.module';
+import {ExportRouterModule} from './export/export-router.module';
+import {BillRoutingModule} from './bill/bill-routing.module';
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
     CommunalRoutingModule,
     HrtRoutingModule,
     TelecommunicationRoutingModule,
-    SettingsRoutingModule
+    BillRoutingModule,
+    ExportRouterModule
   ],
   exports: [RouterModule]
 })

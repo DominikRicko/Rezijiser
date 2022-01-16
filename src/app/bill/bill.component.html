@@ -1,0 +1,35 @@
+<div class="mat-elevation-z8">
+  <mat-form-field hideRequiredMarker>
+    <mat-label>Datum dospijeća</mat-label>
+    <input matInput required [matDatepicker]="paydayPicker" [(ngModel)]="bill.payday">
+    <mat-datepicker-toggle matSuffix [for]="paydayPicker"></mat-datepicker-toggle>
+    <mat-datepicker  #paydayPicker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Datum plaćanja</mat-label>
+    <input matInput [matDatepicker]="datePaidPicker" [(ngModel)]="bill.datePaid">
+    <mat-datepicker-toggle matSuffix [for]="datePaidPicker"></mat-datepicker-toggle>
+    <mat-datepicker  #datePaidPicker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field hideRequiredMarker>
+    <mat-label>Cijena</mat-label>
+    <input matInput required [(ngModel)]="bill.cost">
+  </mat-form-field>
+  <br>
+  <mat-form-field hideRequiredMarker>
+    <mat-label>Tip</mat-label>
+    <mat-select [(ngModel)]="bill.type">
+      <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field *ngIf="counterType.includes(bill.type)" hideRequiredMarker>
+    <mat-label>Potrošnja</mat-label>
+    <input matInput required [(ngModel)]="bill.count">
+  </mat-form-field>
+  <br>
+  <button mat-raised-button (click)="onSubmit()">Dodaj</button>
+  <button mat-raised-button (click)="cancel()">Otkaži</button>
+</div>

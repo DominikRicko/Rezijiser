@@ -1,3 +1,6 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free";
 /* You can add global styles to this file, and also import other style files */
 html, body {
   margin: 0;
@@ -76,38 +79,33 @@ i.icon{
   font-size: 25px;
   &.app{
       background-image: url("./assets/icons/icon_app.svg");
-      aspect-ratio: '86x94';
   }
   &.trash{
       background-image: url("./assets/icons/icon_trash.svg");
-      aspect-ratio: '16x21';
   }
   &.hrt{
       background-image: url("./assets/icons/icon_tv.svg");
-      aspect-ratio: '20x20';
   }
   &.communal{
       background-image: url("./assets/icons/icon_recycle.svg");
-      aspect-ratio: '20x20';
   }
   &.reservation{
       background-image: url("./assets/icons/icon_building.svg");
-      aspect-ratio: '24x24';
   }
   &.telecom{
       background-image: url("./assets/icons/icon_phone.svg");
-      aspect-ratio: '19x18';
   }
   &.gas{
       background-image: url("./assets/icons/icon_fire.svg");
-      aspect-ratio: '16x21';
   }
   &.water{
       background-image: url("./assets/icons/icon_water.svg");
-      aspect-ratio: '16x20';
   }
   &.power{
       background-image: url("./assets/icons/icon_power.svg");
-      aspect-ratio: '11x20';
+  }
+  &.export{
+    background-image: url("./assets/icons/icon_export.svg");
   }
 }
+
