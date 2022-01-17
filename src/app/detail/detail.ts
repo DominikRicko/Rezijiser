@@ -1,7 +1,7 @@
-export class Communal {
+export class Detail {
   identificator: number;
   payday: Date;
   datePaid: Date;
   cost: number;
-  type: string;
+  counter: number;
 }
