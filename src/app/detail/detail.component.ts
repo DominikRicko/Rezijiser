@@ -6,6 +6,8 @@ import {BillService} from '../_services/bill.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../_services/data.service';
 import {Bill} from '../bill/bill';
+import {FormControl, FormGroup} from '@angular/forms';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -20,13 +22,27 @@ export class DetailComponent implements OnInit {
   counterType = ['power', 'water', 'gas'];
   dataSource: MatTableDataSource<Bill>;
   type: string;
+  datePipe = new DatePipe('en-US');
 
+  filterForm = new FormGroup({
+    fromDatePayday: new FormControl(),
+    toDatePayday: new FormControl(),
+    paid: new FormControl(),
+    fromDatePaid: new FormControl(),
+    toDatePaid: new FormControl()
+  });
   constructor(
     private billService: BillService,
     private route: ActivatedRoute,
     public dataService: DataService,
     private router: Router
   ) { }
+
+  get fromDatePayday() { return this.filterForm.get('fromDatePayday').value; }
+  get toDatePayday() { return this.filterForm.get('toDatePayday').value; }
+  get paid() { return this.filterForm.get('paid').value; }
+  get fromDatePaid() { return this.filterForm.get('fromDatePaid').value; }
+  get toDatePaid() { return this.filterForm.get('toDatePaid').value; }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -41,6 +57,18 @@ export class DetailComponent implements OnInit {
         this.sort.sort(({ id: 'payday', start: 'desc'} as MatSortable));
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = (row, filter) => {
+          if (this.fromDatePayday && this.toDatePayday) {
+            return this.formatDate(row.payday) >= this.formatDate(this.fromDatePayday) &&
+              this.formatDate(row.payday) <= this.formatDate(this.toDatePayday);
+          } else if (this.paid) {
+            return row.datePaid != null;
+          } else if (this.fromDatePaid && this.toDatePaid) {
+            return this.formatDate(row.datePaid) >= this.formatDate(this.fromDatePaid) &&
+              this.formatDate(row.datePaid) <= this.formatDate(this.toDatePaid);
+          }
+          return true;
+        };
       });
     });
   }
@@ -68,4 +96,11 @@ export class DetailComponent implements OnInit {
     this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
   }
 
+  applyFilter() {
+    this.dataSource.filter = '' + Math.random();
+  }
+
+  private formatDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 }

@@ -2,6 +2,37 @@
 <div class="fix-container">
   <app-navigation></app-navigation>
   <div class="col-md-10">
+    <div>
+      <form [formGroup]="filterForm">
+        <mat-form-field>
+          <mat-label>Rok plaćanja</mat-label>
+          <input matInput [matDatepicker]="fromDatePayday" placeholder="Od datuma" formControlName="fromDatePayday">
+          <mat-datepicker-toggle matSuffix [for]="fromDatePayday"></mat-datepicker-toggle>
+          <mat-datepicker  #fromDatePayday></mat-datepicker>
+          <input matInput [matDatepicker]="toDatePayday" placeholder="Do datuma" formControlName="toDatePayday">
+          <mat-datepicker-toggle matSuffix [for]="toDatePayday"></mat-datepicker-toggle>
+          <mat-datepicker  #toDatePayday></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Plaćeno</mat-label>
+          <mat-select formControlName="paid">
+            <mat-option value="Da"> Da </mat-option>
+            <mat-option value="Ne"> Ne </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Datum plaćanja</mat-label>
+          <input matInput [matDatepicker]="fromDatePaid" placeholder="Od datuma" formControlName="fromDatePaid">
+          <mat-datepicker-toggle matSuffix [for]="fromDatePaid"></mat-datepicker-toggle>
+          <mat-datepicker  #fromDatePaid></mat-datepicker>
+          <input matInput [matDatepicker]="toDatePaid" placeholder="Do datuma" formControlName="toDatePaid">
+          <mat-datepicker-toggle matSuffix [for]="toDatePaid"></mat-datepicker-toggle>
+          <mat-datepicker  #toDatePaid></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <button mat-button class="btn btn-primary" (click)="applyFilter()">Submit</button>
+      </form>
+    </div>
     <mat-table matSort [dataSource]="dataSource">
       <ng-container matColumnDef="payday">
         <mat-header-cell mat-sort-header="payday" *matHeaderCellDef> Rok plaćanja </mat-header-cell>
