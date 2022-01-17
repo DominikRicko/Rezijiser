@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort} from '@angular/material/sort';
+import {MatSort, MatSortable} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {BillService} from '../_services/bill.service';
@@ -38,6 +38,7 @@ export class DetailComponent implements OnInit {
       }
       this.billService.getAll(this.type).subscribe((data) => {
         this.dataSource = new MatTableDataSource<Bill>(data);
+        this.sort.sort(({ id: 'payday', start: 'desc'} as MatSortable));
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       });

@@ -4,7 +4,7 @@
   <div class="col-md-10">
     <mat-table matSort [dataSource]="dataSource">
       <ng-container matColumnDef="payday">
-        <mat-header-cell mat-sort-header="payday" *matHeaderCellDef> Datum dospijeća </mat-header-cell>
+        <mat-header-cell mat-sort-header="payday" *matHeaderCellDef> Rok plaćanja </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.payday}} </mat-cell>
       </ng-container>
 
