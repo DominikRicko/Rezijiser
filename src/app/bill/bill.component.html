@@ -20,16 +20,16 @@
   <br>
   <mat-form-field hideRequiredMarker>
     <mat-label>Tip</mat-label>
-    <mat-select [(ngModel)]="bill.type">
-      <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }}</mat-option>
+    <mat-select disabled="{{isEdit}}" [(ngModel)]="bill.type">
+      <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }} </mat-option>
     </mat-select>
   </mat-form-field>
   <br>
   <mat-form-field *ngIf="counterType.includes(bill.type)" hideRequiredMarker>
     <mat-label>Potrošnja</mat-label>
-    <input matInput required [(ngModel)]="bill.count">
+    <input matInput required [(ngModel)]="bill.counter">
   </mat-form-field>
   <br>
-  <button mat-raised-button (click)="onSubmit()">Dodaj</button>
+  <button mat-raised-button (click)="onSubmit()"> {{ isEdit ? 'Uredi' : 'Dodaj' }} </button>
   <button mat-raised-button (click)="cancel()">Otkaži</button>
 </div>

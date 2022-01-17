@@ -10,7 +10,6 @@ export class NavigationComponent implements OnInit {
   constructor(private tokenStorage: TokenStorageService) {}
 
   ngOnInit(): void {
-    console.log('NavigationComponent INIT');
   }
 
   signOut() {

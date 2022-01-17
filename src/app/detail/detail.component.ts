@@ -3,8 +3,9 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {BillService} from '../_services/bill.service';
-import {ActivatedRoute} from '@angular/router';
-import {Detail} from './detail';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DataService} from '../_services/data.service';
+import {Bill} from '../bill/bill';
 
 @Component({
   selector: 'app-detail',
@@ -17,10 +18,15 @@ export class DetailComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayColumns = ['payday', 'paid', 'datePaid', 'cost', 'counter', 'action'];
   counterType = ['power', 'water', 'gas'];
-  dataSource: MatTableDataSource<Detail>;
+  dataSource: MatTableDataSource<Bill>;
   type: string;
 
-  constructor(private billService: BillService, private route: ActivatedRoute) { }
+  constructor(
+    private billService: BillService,
+    private route: ActivatedRoute,
+    public dataService: DataService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -31,10 +37,9 @@ export class DetailComponent implements OnInit {
         this.displayColumns = ['payday', 'paid', 'datePaid', 'cost', 'counter', 'action'];
       }
       this.billService.getAll(this.type).subscribe((data) => {
-        this.dataSource = new MatTableDataSource<Detail>(data);
+        this.dataSource = new MatTableDataSource<Bill>(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(data);
       });
     });
   }
@@ -42,7 +47,6 @@ export class DetailComponent implements OnInit {
   refreshTable() {
     this.billService.getAll(this.type).subscribe((data) => {
       this.dataSource.data = data;
-      console.log(data);
     });
   }
 
@@ -51,18 +55,16 @@ export class DetailComponent implements OnInit {
     else { return 'Ne'; }
   }
 
-  delete(detail: Detail): void {
+  delete(detail: Bill): void {
     this.billService.deleteBill(detail.identificator, this.type).subscribe((data) => {
-      console.log(data);
       this.refreshTable();
     });
   }
 
-  update(detail: Detail): void{
-    this.billService.updateBill(detail, this.type).subscribe((data) => {
-      console.log(data);
-      this.refreshTable();
-    });
+  update(detail: Bill): void {
+    this.dataService.bill = detail;
+    this.dataService.bill.type = this.type;
+    this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
   }
 
 }

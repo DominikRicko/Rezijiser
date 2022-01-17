@@ -4,5 +4,5 @@ export class Bill {
   datePaid: Date;
   cost: number;
   type: string;
-  count: number;
+  counter: number;
 }

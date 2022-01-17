@@ -7,7 +7,7 @@
     <div class="divider"></div>
 
     <div>
-      <button routerLink="/bill" class="btn-new"></button>
+      <button routerLink="/bill" [queryParams]="{ action: 'new'}"class="btn-new"></button>
     </div>
 
     <div class="notifications">

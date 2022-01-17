@@ -14,17 +14,10 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import {RegisterModule} from './register/register.module';
 import {AuthGuard} from './_helpers/auth.guard';
-import {CommunalModule} from './communal/communal.module';
-import {GasModule} from './gas/gas.module';
-import {HrtModule} from './hrt/hrt.module';
-import {PowerModule} from './power/power.module';
-import {ReservationModule} from './reservation/reservation.module';
-import {TelecommunicationModule} from './telecommunication/telecommunication.module';
-import {TrashModule} from './trash/trash.module';
-import {WaterModule} from './water/water.module';
 import {ExportModule} from './export/export.module';
 import {BillModule} from './bill/bill.module';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DataService} from './_services/data.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,20 +31,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     DetailModule,
     LoginModule,
     RegisterModule,
-    CommunalModule,
-    GasModule,
-    HrtModule,
-    PowerModule,
-    ReservationModule,
-    TelecommunicationModule,
-    TrashModule,
-    WaterModule,
     ExportModule,
     BillModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
