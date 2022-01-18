@@ -58,16 +58,21 @@ export class DetailComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.dataSource.filterPredicate = (row, filter) => {
+          let result = true;
           if (this.fromDatePayday && this.toDatePayday) {
-            return this.formatDate(row.payday) >= this.formatDate(this.fromDatePayday) &&
+            result = result && this.formatDate(row.payday) >= this.formatDate(this.fromDatePayday) &&
               this.formatDate(row.payday) <= this.formatDate(this.toDatePayday);
-          } else if (this.paid) {
-            return row.datePaid != null;
+          } else if (this.paid != null) {
+              if(this.paid === true){
+                result = result && row.datePaid != null;
+              } else{
+                result = result && row.datePaid == null;
+              }
           } else if (this.fromDatePaid && this.toDatePaid) {
-            return this.formatDate(row.datePaid) >= this.formatDate(this.fromDatePaid) &&
+            result = result && this.formatDate(row.datePaid) >= this.formatDate(this.fromDatePaid) &&
               this.formatDate(row.datePaid) <= this.formatDate(this.toDatePaid);
           }
-          return true;
+          return result;
         };
       });
     });
