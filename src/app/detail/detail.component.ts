@@ -63,7 +63,7 @@ export class DetailComponent implements OnInit {
             result = result && this.formatDate(row.payday) >= this.formatDate(this.fromDatePayday) &&
               this.formatDate(row.payday) <= this.formatDate(this.toDatePayday);
           } else if (this.paid != null) {
-              if(this.paid === true){
+              if(this.paid === 'Da'){
                 result = result && row.datePaid != null;
               } else{
                 result = result && row.datePaid == null;
