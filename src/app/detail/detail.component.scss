@@ -12,3 +12,21 @@
   display: flex;
   flex-direction: row;
 }
+
+.remove-spacing{
+  margin: 0;
+  padding: 0;
+}
+
+.full-view{
+  display: flex;
+  flex-flow: column;
+}
+
+.full-table{
+  height: 100%;
+}
+
+.button-spacing{
+  padding: 0 5px;
+}
