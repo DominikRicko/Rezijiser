@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [BillComponent],
@@ -23,7 +24,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatInputModule,
     MatSelectModule,
     MatNativeDateModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class BillModule {}

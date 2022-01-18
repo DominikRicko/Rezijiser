@@ -6,6 +6,8 @@ import {BillService} from '../_services/bill.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../_services/data.service';
 import {Bill} from '../bill/bill';
+import { MatDialog } from '@angular/material/dialog';
+import { BillComponent } from '../bill/bill.component';
 
 @Component({
   selector: 'app-detail',
@@ -25,7 +27,8 @@ export class DetailComponent implements OnInit {
     private billService: BillService,
     private route: ActivatedRoute,
     public dataService: DataService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -65,7 +68,10 @@ export class DetailComponent implements OnInit {
   update(detail: Bill): void {
     this.dataService.bill = detail;
     this.dataService.bill.type = this.type;
-    this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
+    this.dialog.open(BillComponent, {
+      data: true
+    });
+    //this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
   }
 
 }

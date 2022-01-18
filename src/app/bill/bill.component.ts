@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {Bill} from './bill';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BillService} from '../_services/bill.service';
 import {DatePipe} from '@angular/common';
 import {DataService} from '../_services/data.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bill',
@@ -22,12 +23,15 @@ export class BillComponent implements OnInit {
     private billService: BillService,
     private router: Router,
     private route: ActivatedRoute,
-    public dataService: DataService
-  ) { }
+    public dataService: DataService,
+    public dialogRef: MatDialogRef<BillComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: boolean,
+  ) {
+      this.isEdit = data;
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.isEdit = params.action === 'edit';
       if (this.isEdit) {
         this.bill = this.dataService.bill;
         console.log(this.bill);
@@ -63,10 +67,11 @@ export class BillComponent implements OnInit {
         this.router.navigate(['detail'], { queryParams: { type: this.bill.type } });
       });
     }
+    this.dialogRef.close();
   }
 
   cancel() {
-    this.router.navigate(['detail'], { queryParams: { type: this.bill.type } });
+    this.dialogRef.close();
   }
 
   private formatDate(date) {
