@@ -31,13 +31,10 @@ export class BillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      if (this.isEdit) {
-        this.bill = this.dataService.bill;
-        console.log(this.bill);
-        this.dataService.bill = new Bill();
-      }
-    });
+    if (this.isEdit) {
+      this.bill = this.dataService.bill;
+      this.dataService.bill = new Bill();
+    }
   }
 
   onSubmit() {

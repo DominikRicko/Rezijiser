@@ -6,8 +6,10 @@ import {BillService} from '../_services/bill.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../_services/data.service';
 import {Bill} from '../bill/bill';
-import { MatDialog } from '@angular/material/dialog';
-import { BillComponent } from '../bill/bill.component';
+import {MatDialog} from '@angular/material/dialog';
+import {BillComponent} from '../bill/bill.component';
+import {AbstractControl, FormBuilder} from '@angular/forms';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-detail',
@@ -22,14 +24,27 @@ export class DetailComponent implements OnInit {
   counterType = ['power', 'water', 'gas'];
   dataSource: MatTableDataSource<Bill>;
   type: string;
+  formControl: AbstractControl;
+  datePipe = new DatePipe('en-US');
 
   constructor(
     private billService: BillService,
     private route: ActivatedRoute,
     public dataService: DataService,
     private router: Router,
-    public dialog: MatDialog
-  ) { }
+    public dialog: MatDialog,
+    formBuilder: FormBuilder
+  ) {
+    this.formControl = formBuilder.group({
+      fromDatePayday: '',
+      toDatePayday: '',
+      paid: 'Sve',
+      fromDatePaid: '',
+      toDatePaid: '',
+      cost: '',
+      counter: ''
+    });
+  }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -44,8 +59,36 @@ export class DetailComponent implements OnInit {
         this.sort.sort(({ id: 'payday', start: 'desc'} as MatSortable));
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = ((row, filter) => {
+          if (filter.fromDatePayday && !filter.toDatePayday) {
+            filter.toDatePayday = filter.fromDatePayday;
+          }
+          if (!filter.fromDatePayday && filter.toDatePayday) {
+            filter.fromDatePayday = filter.toDatePayday;
+          }
+          if (filter.fromDatePaid && !filter.toDatePaid) {
+            filter.toDatePaid = filter.fromDatePaid;
+          }
+          if (!filter.fromDatePaid && filter.toDatePaid) {
+            filter.fromDatePaid = filter.toDatePaid;
+          }
+          const payday = (!filter.fromDatePayday) ||
+            (row.payday >= this.formatDate(filter.fromDatePayday) &&
+              row.payday <= this.formatDate(filter.toDatePayday));
+          const paid = !filter.paid ||
+            (filter.paid === 'Ne' && row.datePaid === null) ||
+            (filter.paid === 'Da' && row.datePaid !== null) ||
+            filter.paid === 'Sve';
+          const datePaid = !filter.fromDatePaid ||
+            (row.datePaid >= this.formatDate(filter.fromDatePaid) &&
+              row.datePaid <= this.formatDate(filter.toDatePaid));
+          const cost = !filter.cost || row.cost.includes(filter.cost);
+          const counter = !filter.counter || row.counter.includes(filter.counter);
+          return payday && paid && cost && counter && datePaid;
+        }) as (Bill) => boolean;
       });
     });
+
   }
 
   refreshTable() {
@@ -55,8 +98,8 @@ export class DetailComponent implements OnInit {
   }
 
   isPaid(datePaid: Date): string {
-    if (datePaid != null) { return 'Da'; }
-    else { return 'Ne'; }
+    if (datePaid != null) { return ' Da '; }
+    else { return ' Ne '; }
   }
 
   delete(detail: Bill): void {
@@ -74,4 +117,25 @@ export class DetailComponent implements OnInit {
     //this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
   }
 
+  resetFilter() {
+    this.formControl.reset({
+      fromDatePayday: '',
+      toDatePayday: '',
+      paid: 'Sve',
+      fromDatePaid: '',
+      toDatePaid: '',
+      cost: '',
+      counter: ''
+    });
+    this.dataSource.filter = this.formControl.value;
+  }
+
+  filter() {
+    this.dataSource.filter = this.formControl.value;
+  }
+
+  private formatDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 }
+
