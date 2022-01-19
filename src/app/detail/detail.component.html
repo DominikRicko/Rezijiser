@@ -2,9 +2,9 @@
 <div class="fix-container">
   <app-navigation></app-navigation>
   <div class="fix-container remove-spacing">
-    <div class="col-md-12 remove-spacing full-view">
+    <div class="col-lg-12 remove-spacing full-view">
 
-      <form [formGroup]="formControl">
+      <form [formGroup]="formControl" class="full-row">
         <mat-form-field>
           <mat-label>Rok plaćanja</mat-label>
           <mat-date-range-input [rangePicker]="pickerPayday">
@@ -44,8 +44,8 @@
           <input matInput formControlName="counter">
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="filter()"> Filtriraj </button>
-        <button mat-raised-button color="accent" (click)="resetFilter()"> Očisti filter </button>
+        <button mat-raised-button color="primary" (click)="filter()" class="button-spacing"> Filtriraj </button>
+        <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter </button>
       </form>
 
       <mat-table matSort [dataSource]="dataSource" class="full-table">
