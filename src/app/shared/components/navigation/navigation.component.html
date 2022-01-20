@@ -1,16 +1,16 @@
 <section class="navbar container-default" role="navigation">
     <div class="fix-container">
         <ul class="nav navbar-nav">
-            <li class="power"><a role="link" routerLink='/detail' [queryParams]="{ type: 'power'}"><i class="icon power"></i><span>Struja</span></a></li>
-            <li class="water"><a role="link" routerLink='/detail' [queryParams]="{ type: 'water'}"><i class="icon water"></i><span>Voda</span></a></li>
-            <li class="gas"><a role="link" routerLink='/detail' [queryParams]="{ type: 'gas'}"><i class="icon gas"></i><span>Plin</span></a></li>
-            <li class="reservation"><a role="link" routerLink='/detail' [queryParams]="{ type: 'reservation'}"><i class="icon reservation"></i><span>Pričuva</span></a></li>
-            <li class="trash"><a role="link" routerLink='/detail' [queryParams]="{ type: 'trash'}"><i class="icon trash"></i><span>Odvoz smeća</span></a></li>
-            <li class="communal"><a role="link" routerLink='/detail' [queryParams]="{ type: 'communal'}"><i class="icon communal"></i><span>Komunalac</span></a></li>
-            <li class="hrt"><a role="link" routerLink='/detail' [queryParams]="{ type: 'hrt'}"><i class="icon hrt"></i><span>HRT</span></a></li>
-            <li class="telecom"><a role="link" routerLink='/detail' [queryParams]="{ type: 'telecom'}"><i class="icon telecom"></i><span>Telekomunikacije</span></a></li>
+            <li class="power"><a role="link" routerLink='/detail' [queryParams]="{ type: 'power'}"><i class="icon power"></i><span [className]="type === 'power' ? 'bold' : ''">Struja</span></a></li>
+            <li class="water"><a role="link" routerLink='/detail' [queryParams]="{ type: 'water'}"><i class="icon water"></i><span [className]="type === 'water' ? 'bold' : ''">Voda</span></a></li>
+            <li class="gas"><a role="link" routerLink='/detail' [queryParams]="{ type: 'gas'}"><i class="icon gas"></i><span [className]="type === 'gas' ? 'bold' : ''">Plin</span></a></li>
+            <li class="reservation"><a role="link" routerLink='/detail' [queryParams]="{ type: 'reservation'}"><i class="icon reservation"></i><span [className]="type === 'reservation' ? 'bold' : ''">Pričuva</span></a></li>
+            <li class="trash"><a role="link" routerLink='/detail' [queryParams]="{ type: 'trash'}"><i class="icon trash"></i><span [className]="type === 'trash' ? 'bold' : ''">Odvoz smeća</span></a></li>
+            <li class="communal"><a role="link" routerLink='/detail' [queryParams]="{ type: 'communal'}"><i class="icon communal"></i><span [className]="type === 'communal' ? 'bold' : ''">Komunalac</span></a></li>
+            <li class="hrt"><a role="link" routerLink='/detail' [queryParams]="{ type: 'hrt'}"><i class="icon hrt"></i><span [className]="type === 'hrt' ? 'bold' : ''">HRT</span></a></li>
+            <li class="telecom"><a role="link" routerLink='/detail' [queryParams]="{ type: 'telecom'}"><i class="icon telecom"></i><span [className]="type === 'telecom' ? 'bold' : ''">Telekomunikacije</span></a></li>
             <li class="break"></li>
-            <li class="export"><a role="link" routerLink='/export'><i class="icon export"></i><span>Ispis</span></a></li>
+            <li class="export"><a role="link" routerLink='/export' [queryParams]="{ type: 'export'}"><i class="icon export" [className]="type === 'export' ? 'icon export bold' : 'icon export'"></i><span>Ispis</span></a></li>
             <li class="break"></li>
             <li class="logout"><a role="link" routerLink='/login' (click)="signOut()" class="headerText logout"><i class="fas fa-sign-out-alt"></i><span class="afterIcon">Logout</span></a></li>
         </ul>

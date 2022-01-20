@@ -25,28 +25,33 @@ ul.navbar-nav{
         height: 30px;
         width: 100%;
         margin: 5px;
-        >a{
-            display: flex;
-            justify-content: left;
-            vertical-align: middle;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            min-width: 200px;
+        >a {
+          display: flex;
+          justify-content: left;
+          vertical-align: middle;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          min-width: 200px;
 
-            >span {
-                color: #555555;
-                font-family: Quicksand;
-                font-size: 20px;
-                font-weight: 500;
-            }
-            >i, >span{
-                vertical-align: middle;
-                white-space: normal;
-                margin-left: 5px;
-                -webkit-transition: all ease-in-out 0.4s;
-                transition: all ease-in-out 0.4s;
-            }
+          > span {
+            color: #555555;
+            font-family: Quicksand;
+            font-size: 20px;
+            font-weight: 500;
+          }
+
+          > .bold {
+            font-weight: bolder !important;
+          }
+
+          > i, > span {
+            vertical-align: middle;
+            white-space: normal;
+            margin-left: 5px;
+            -webkit-transition: all ease-in-out 0.4s;
+            transition: all ease-in-out 0.4s;
+          }
         }
         >a:hover{
             >span{
@@ -69,3 +74,4 @@ ul.navbar-nav{
         &.logout{background-color: #9dafb6;}
     }
 }
+
