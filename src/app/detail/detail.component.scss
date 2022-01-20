@@ -23,10 +23,18 @@
   flex-flow: column;
 }
 
+.full-row{
+  margin: 0 5px;
+
+  mat-form-field{
+    padding: 0 5px;
+  }
+}
+
 .full-table{
   height: 100%;
 }
 
 .button-spacing{
-  padding: 0 5px;
+  margin: 0 5px;
 }
