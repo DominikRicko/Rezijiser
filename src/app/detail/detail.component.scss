@@ -21,10 +21,11 @@
 .full-view{
   display: flex;
   flex-flow: column;
+  margin: 5px
 }
 
 .full-row{
-  margin: 0 5px;
+  padding: 10px 10px 0;
 
   mat-form-field{
     padding: 0 5px;
@@ -33,6 +34,8 @@
 
 .full-table{
   height: 100%;
+  padding: 0 20px;
+  width: auto;
 }
 
 .button-spacing{
@@ -41,4 +44,50 @@
 
 .mat-cell, .mat-header-cell {
   justify-content: center;
+}
+
+.background{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.background-power{
+  background-image: url("../../assets/power-background.jpg");
+}
+
+.background-water{
+  background-image: url("../../assets/water-background.jpg");
+}
+
+.background-gas{
+  background-image: url("../../assets/gas-background.jpg");
+}
+
+.background-reservation{
+  background-image: url("../../assets/reservation-background.jpg");
+}
+
+.background-trash{
+  background-image: url("../../assets/trash-background.jpg");
+}
+
+.background-communal{
+  background-image: url("../../assets/communal-background.jpg");
+}
+
+.background-hrt{
+  background-image: url("../../assets/hrt-background.jpg");
+}
+
+.background-telecom{
+  background-image: url("../../assets/telecom-background.jpg");
+}
+
+.solid-background{
+  background: white;
+}
+
+.transparent{
+  opacity: 80%;
 }
