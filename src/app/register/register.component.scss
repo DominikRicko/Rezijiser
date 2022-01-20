@@ -27,4 +27,18 @@
 .fullscreen{
     width: 100vw;
     height: 100vh;
+    background-image: url("../../assets/background.jpg");
+    background-size: cover;
+    background-color: rgb(245, 242, 222);
+    background-blend-mode: luminosity;
+    background-repeat: no-repeat;
+}
+
+.title{
+    font-size: xxx-large;
+    color: #393939;
+    font-family: Quicksand;
+    font-weight: 500;
+    margin: auto;
+    padding-bottom: 10px;
 }
