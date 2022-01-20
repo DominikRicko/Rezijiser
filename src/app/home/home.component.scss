@@ -13,28 +13,6 @@
   flex-direction: row;
 }
 
-.btn-new {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background:
-    linear-gradient(#656063 0 0) top left,
-    linear-gradient(#656063 0 0) top right,
-    linear-gradient(#656063 0 0) bottom left,
-    linear-gradient(#656063 0 0) bottom right;
-  background-size: calc(50% - 2px) calc(50% - 2px); /*thickness = 2px (2*1px) */
-  background-repeat: no-repeat;
-  border: 15px solid #656063; /*length = 30px (50px - 2x10px) */
-  box-sizing: border-box;
-}
-
-.btn-new:hover {
-  background-color: #333333;
-}
-
-.bottom-right {
-  display: block;
-  position: sticky;
-  bottom: 60px;
-  right: 30px;
+.container {
+  max-width: 100%;
 }
