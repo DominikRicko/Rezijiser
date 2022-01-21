@@ -1,13 +1,10 @@
 <app-header></app-header>
 <div class="fix-container">
   <app-navigation></app-navigation>
-  <div class="container">
-    <app-stats [update]="update"></app-stats>
-    <br>
-    <app-bar-chart [update]="update"></app-bar-chart>
-    <br>
-    <app-pie-chart [update]="update"></app-pie-chart>
-    <br>
+  <div class="container row">
+    <app-stats [update]="update" class="col-8 card"></app-stats>
+    <app-bar-chart [update]="update" class="col-4 card"></app-bar-chart>
+    <app-pie-chart [update]="update" class="col-4 card"></app-pie-chart>
   </div>
 </div>
 <app-footer></app-footer>
