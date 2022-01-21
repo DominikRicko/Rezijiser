@@ -6,7 +6,7 @@
         <label for="email">Email</label>
         <input type="text" class="form-control" name="email" [(ngModel)]="form.email" required #email="ngModel" />
         <div class="alert alert-danger" role="alert" *ngIf="f.submitted && email.invalid">
-          Username is required!
+          Email ne može biti prazan.
         </div>
       </div>
       <div class="form-group">
@@ -14,23 +14,23 @@
         <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6"
           #password="ngModel" />
         <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Lozinka ne može biti prazna.</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            Lozinka mora imati barem 6 znakova.
           </div>
         </div>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block">
-          Login
+          Prijava
         </button>
         <button (click)="register()" class="btn btn-secondary btn-block">
-          Register
+          Registracija
         </button>
       </div>
       <div class="form-group">
         <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
-          Login failed: {{ errorMessage }}
+          Prijava neuspiješna: {{ errorMessage }}
         </div>
       </div>
     </form>
