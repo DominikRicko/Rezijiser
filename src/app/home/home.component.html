@@ -2,13 +2,8 @@
 <div class="fix-container">
   <app-navigation></app-navigation>
   <div class="container">
-    <div>
-      <mat-select [(value)]="selectedType" (selectionChange)="refresh()">
-        <mat-label>Prikaži:</mat-label>
-        <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }} </mat-option>
-      </mat-select>
-    </div>
-    <div echarts [options]="options" class="demo-chart"></div>
+    <app-bar-chart [data]="totalCost" [xAxis]="types"></app-bar-chart>
+    <app-pie-chart [data]="totalCost" [xAxis]="types"></app-pie-chart>
   </div>
 </div>
 <app-footer></app-footer>
