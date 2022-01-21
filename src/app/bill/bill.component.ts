@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {Bill} from './bill';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {BillService} from '../_services/bill.service';
 import {DatePipe} from '@angular/common';
 import {DataService} from '../_services/data.service';
@@ -22,7 +22,6 @@ export class BillComponent implements OnInit {
   constructor(
     private billService: BillService,
     private router: Router,
-    private route: ActivatedRoute,
     public dataService: DataService,
     public dialogRef: MatDialogRef<BillComponent>,
     @Inject(MAT_DIALOG_DATA) public data: boolean,

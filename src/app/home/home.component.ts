@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BillService} from '../_services/bill.service';
+import {DataService} from '../_services/data.service';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,54 +13,25 @@ export class HomeComponent implements OnInit {
   typeValue = ['power', 'water', 'gas', 'reservation', 'trash', 'communal', 'hrt', 'telecom'];
   options: any;
   selectedType = 'gas';
+  update: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private billService: BillService) { }
+  constructor(private billService: BillService, public dataService: DataService) { }
 
   ngOnInit(): void {
-    this.refresh();
+    this.typeValue.forEach((type) => {
+      this.billService.getAll(type).subscribe((bills) => {
+        this.dataService.bills.push(bills);
+        this.dataService.types.push(this.types[this.typeValue.indexOf(type)]);
+      },
+        (error) => { console.log(error); },
+        () => {
+        console.log('Completed: ' + type);
+        this.refreshData();
+      });
+    });
   }
 
-  refresh() {
-    const xAxisData = [];
-    const cost = [];
-    const counter = [];
-    this.billService.getAll(this.selectedType).subscribe((data) => {
-      data.forEach((bill) => {
-        xAxisData.push(bill.payday);
-        cost.push(bill.cost);
-        counter.push(bill.counter);
-      });
-      this.options = {
-        legend: {
-          data: ['Cijena', 'Potrošnja'],
-          align: 'left',
-        },
-        tooltip: {},
-        xAxis: {
-          data: xAxisData,
-          silent: false,
-          splitLine: {
-            show: false,
-          },
-        },
-        yAxis: {},
-        series: [
-          {
-            name: 'Cijena',
-            type: 'bar',
-            data: cost,
-            animationDelay: (idx) => idx * 10,
-          },
-          {
-            name: 'Potrošnja',
-            type: 'bar',
-            data: counter,
-            animationDelay: (idx) => idx * 10 + 100,
-          },
-        ],
-        animationEasing: 'elasticOut',
-        animationDelayUpdate: (idx) => idx * 5,
-      };
-    });
+  refreshData(){
+    this.update.next(true);
   }
 }
