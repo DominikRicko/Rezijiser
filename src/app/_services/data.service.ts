@@ -1,7 +1,7 @@
-import {Bill} from '../bill/bill';
+import { Bill } from '../_model/Bill';
 
 export class DataService {
   public bill: Bill;
-  public bills = [];
-  public types = [];
+  public bills: Bill[][] = [];
+  public types: string[] = [];
 }

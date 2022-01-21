@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {Bill} from './bill';
 import {Router} from '@angular/router';
 import {BillService} from '../_services/bill.service';
 import {DatePipe} from '@angular/common';
 import {DataService} from '../_services/data.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Bill } from '../_model/Bill';
+import { BillBuilder } from '../_model/BillBuilder';
 
 @Component({
   selector: 'app-bill',
@@ -12,7 +13,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./bill.component.scss']
 })
 export class BillComponent implements OnInit {
-  bill: Bill = new Bill();
+  bill: any = {};
   isEdit: boolean;
   types = ['Struja', 'Voda', 'Plin', 'Pričuva', 'Odvoz smeća', 'Komunalac', 'HRT', 'Telekomunikacije'];
   typeValue = ['power', 'water', 'gas', 'reservation', 'trash', 'communal', 'hrt', 'telecom'];
@@ -32,28 +33,22 @@ export class BillComponent implements OnInit {
   ngOnInit(): void {
     if (this.isEdit) {
       this.bill = this.dataService.bill;
-      this.dataService.bill = new Bill();
+      this.dataService.bill = BillBuilder.build();
     }
   }
 
   onSubmit() {
-    let newBill = {};
+    const newBill: Bill = BillBuilder.build();
+
+    newBill.identificator = this.bill.identificator;
+    newBill.cost = this.bill.cost;
+    newBill.payday = this.bill.payday;
+    newBill.datePaid = this.bill.datePaid;
+
     if (this.counterType.includes(this.bill.type)) {
-      newBill = {
-        identificator: this.bill.identificator,
-        cost: this.bill.cost,
-        payday: this.formatDate(this.bill.payday),
-        datePaid: this.formatDate(this.bill.datePaid),
-        counter: this.bill.counter
-      };
-    } else {
-      newBill = {
-        identificator: this.bill.identificator,
-        cost: this.bill.cost,
-        payday: this.formatDate(this.bill.payday),
-        datePaid: this.formatDate(this.bill.datePaid)
-      };
+      newBill.counter = this.bill.counter;
     }
+
     if (!this.isEdit) {
       this.billService.saveBill(newBill, this.bill.type).subscribe((data) => {
         this.router.navigate(['detail'], { queryParams: { type: this.bill.type } });

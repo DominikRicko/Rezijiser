@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
         (error) => { console.log(error); },
         () => {
         console.log('Completed: ' + type);
+        console.log(this.dataService);
         this.refreshData();
       });
     });

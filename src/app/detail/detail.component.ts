@@ -5,11 +5,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import {BillService} from '../_services/bill.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../_services/data.service';
-import {Bill} from '../bill/bill';
 import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
 import {AbstractControl, FormBuilder} from '@angular/forms';
 import {DatePipe} from '@angular/common';
+import { Bill } from '../_model/Bill';
 
 @Component({
   selector: 'app-detail',

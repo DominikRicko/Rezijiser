@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Subject} from "rxjs";
-import {DataService} from "../../../_services/data.service";
+import {Subject} from 'rxjs';
+import {DataService} from '../../../_services/data.service';
 
 @Component({
   selector: 'app-pie-chart',

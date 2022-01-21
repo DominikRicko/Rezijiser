@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
-import {Subject} from "rxjs";
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bar-chart',
