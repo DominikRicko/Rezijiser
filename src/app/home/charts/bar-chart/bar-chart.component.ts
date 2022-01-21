@@ -26,10 +26,6 @@ export class BarChartComponent implements OnInit {
         });
         if (response) {
           this.options = {
-            legend: {
-              data: this.dataService.types,
-              align: 'left',
-            },
             tooltip: {
               trigger: 'item',
               formatter: '{a} <br/>{b} : {c} kn'
