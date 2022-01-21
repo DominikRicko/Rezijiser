@@ -32,7 +32,7 @@ export class PieChartComponent implements OnInit {
             },
             tooltip: {
               trigger: 'item',
-              formatter: '{a} <br/>{b} : {c} ({d}%)'
+              formatter: '{a} <br/>{b} : {c} kn ({d}%)'
             },
             legend: {
               x: 'center',

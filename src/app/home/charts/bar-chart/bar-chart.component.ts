@@ -17,32 +17,45 @@ export class BarChartComponent implements OnInit {
   ngOnInit(): void {
     this.update.subscribe(response => {
         const cost = [];
-        this.dataService.bills.forEach((bills) => {
+        this.dataService.bills.forEach((bills, index) => {
           let sum = 0;
           bills.forEach((bill) => {
             sum += +bill.cost;
           });
-          cost.push(sum);
+          cost.push({value: sum, name: this.dataService.types[index]});
         });
         if (response) {
           this.options = {
             legend: {
-              data: ['Cijena'],
+              data: this.dataService.types,
               align: 'left',
             },
-            tooltip: {},
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b} : {c} kn'
+            },
             xAxis: {
-              data: this.dataService.types,
-              silent: false,
-              splitLine: {
-                show: false,
+              type: 'category',
+              silent: true,
+              boundaryGap: true,
+              axisTick: {
+                alignWithLabel: true
               },
+              axisLabel: {
+                rotate: 30
+              },
+              data: this.dataService.types,
             },
             yAxis: {},
             series: [
               {
                 name: 'Cijena',
                 type: 'bar',
+                colorBy: 'data',
+                label: {
+                  show: true,
+                  position: 'top'
+                },
                 data: cost,
                 animationDelay: (idx) => idx * 10,
               }
