@@ -18,7 +18,6 @@ export class PieChartComponent implements OnInit {
     this.update.subscribe(response => {
         const dataPie = [];
         this.dataService.bills.forEach((bills, index) => {
-          console.log(bills);
           let sum = 0;
           bills.forEach((bill) => {
             sum += +bill.cost;

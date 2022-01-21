@@ -9,7 +9,7 @@ import {Subject} from "rxjs";
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() update: Subject<string> = new Subject<string>();
+  @Input() update: Subject<boolean> = new Subject<boolean>();
   options: any;
 
   constructor(public dataService: DataService) {  }

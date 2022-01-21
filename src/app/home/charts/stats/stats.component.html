@@ -1,1 +1,30 @@
-<p>stats works!</p>
+<mat-card>
+  <mat-card-title>Statistika</mat-card-title>
+  <mat-card-content>
+    <mat-card>
+      <mat-card-title>Najmanji račun</mat-card-title>
+      <mat-card-content>
+        <p>Cijena: {{minBill.cost | number : '1.2-2'}} kn</p>
+        <p>Datum: {{minBill.payday | customFormat}}</p>
+        <p>Tip: {{minBill.type}}</p>
+      </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card>
+      <mat-card-title>Najveći račun</mat-card-title>
+      <mat-card-content>
+        <p>Cijena: {{maxBill.cost | number : '1.2-2'}} kn</p>
+        <p>Datum: {{maxBill.payday | customFormat}}</p>
+        <p>Tip: {{maxBill.type}}</p>
+      </mat-card-content>
+    </mat-card>
+    <br>
+    <mat-card>
+      <mat-card-title>Općenito</mat-card-title>
+      <mat-card-content>
+        <p>Cijena: {{avgBill | number : '1.2-2'}} kn</p>
+        <p>Ukupan broj računa: {{numOfBills}}</p>
+      </mat-card-content>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   constructor(private billService: BillService, public dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.bills = [];
+    this.dataService.types = [];
     this.typeValue.forEach((type) => {
       this.billService.getAll(type).subscribe((bills) => {
         this.dataService.bills.push(bills);

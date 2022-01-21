@@ -2,9 +2,12 @@
 <div class="fix-container">
   <app-navigation></app-navigation>
   <div class="container">
-    <app-stats></app-stats>
+    <app-stats [update]="update"></app-stats>
+    <br>
     <app-bar-chart [update]="update"></app-bar-chart>
+    <br>
     <app-pie-chart [update]="update"></app-pie-chart>
+    <br>
   </div>
 </div>
 <app-footer></app-footer>

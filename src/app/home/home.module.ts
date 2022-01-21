@@ -8,6 +8,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 import { StatsComponent } from './charts/stats/stats.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import {MatCardModule} from "@angular/material/card";
+import {DetailModule} from "../detail/detail.module";
 
 @NgModule({
   declarations: [HomeComponent, BarChartComponent, StatsComponent, PieChartComponent],
@@ -18,7 +20,9 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    DetailModule
   ]
 })
 export class HomeModule {}
