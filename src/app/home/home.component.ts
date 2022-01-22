@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       bills.forEach((bill) => {
         sum += +bill.cost;
       });
-      cost.push({value: sum, name: this.dataService.types[index]});
+      cost.push({value: sum.toFixed(2), name: this.dataService.types[index]});
     });
     this.refreshData();
     return cost;

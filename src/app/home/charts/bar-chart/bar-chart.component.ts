@@ -57,7 +57,13 @@ export class BarChartComponent implements OnInit {
           this.options = {
             tooltip: {
               trigger: 'item',
-              formatter: '{a} <br/>{b} : {c} kn'
+              formatter: (params)=>{
+                if(this.data.length > 0 && this.data[0].date){
+                  return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK<br/>Datum: ${params.data.date}`;
+                } else {
+                  return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK`;
+                }
+              }
             },
             xAxis: {
               type: 'category',
