@@ -2,9 +2,62 @@
 <div class="fix-container">
   <app-navigation></app-navigation>
   <div class="container row">
-    <app-bar-chart [update]="update" class="col-5 card"></app-bar-chart>
-    <app-pie-chart [update]="update" class="col-5 card"></app-pie-chart>
-    <app-stats [update]="update" class="col-12 card"></app-stats>
+
+    <div class="col-5 colfix">
+      <mat-card class="card">
+        <mat-card-title>Ukupni troškovi</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [update]="update"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-5 colfix">
+      <mat-card class="card">
+        <mat-card-title>Ukupni troškovi</mat-card-title>
+        <mat-card-content>
+          <app-pie-chart [update]="update"></app-pie-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-2 colfix">
+      <mat-card class="card">
+        <mat-card-title>Datum</mat-card-title>
+        <mat-card-content>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Najmanji račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [update]="update"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Najveći račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [update]="update"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Prosjećni račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [update]="update"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- <app-stats [update]="update" class="col-12 card"></app-stats> -->
   </div>
 </div>
 <app-footer></app-footer>
