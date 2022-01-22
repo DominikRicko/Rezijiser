@@ -10,20 +10,39 @@ import {DataService} from '../../../_services/data.service';
 export class PieChartComponent implements OnInit {
 
   @Input() update: Subject<boolean> = new Subject<boolean>();
+  @Input() data: {value: string; name: string}[];
   options: any;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService) {
+    this.options = {
+      title: {
+        text: 'Pita',
+        x: 'center'
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} kn ({d}%)'
+      },
+      legend: {
+        x: 'center',
+        y: 'bottom',
+        data: []
+      },
+      calculable: true,
+      series: [
+        {
+          name: 'Udio',
+          type: 'pie',
+          radius: [30, 110],
+          roseType: 'area',
+          data: []
+        }
+      ]
+    };
+   }
 
   ngOnInit(): void {
     this.update.subscribe(response => {
-        const dataPie = [];
-        this.dataService.bills.forEach((bills, index) => {
-          let sum = 0;
-          bills.forEach((bill) => {
-            sum += +bill.cost;
-          });
-          dataPie.push({value: sum, name: this.dataService.types[index]});
-        });
         if (response) {
           this.options = {
             title: {
@@ -46,7 +65,7 @@ export class PieChartComponent implements OnInit {
                 type: 'pie',
                 radius: [30, 110],
                 roseType: 'area',
-                data: dataPie
+                data: this.data
               }
             ]
           };

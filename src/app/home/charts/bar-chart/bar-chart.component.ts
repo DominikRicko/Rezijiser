@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,21 +9,50 @@ import {Subject} from 'rxjs';
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() update: Subject<boolean> = new Subject<boolean>();
+  @Input() data: {value: string; name: string; date?: string}[];
+  @Input() update: Observable<boolean>;
   options: any;
 
-  constructor(public dataService: DataService) {  }
+  constructor(public dataService: DataService) {
+    this.options = {
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} kn'
+      },
+      xAxis: {
+        type: 'category',
+        silent: true,
+        boundaryGap: true,
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLabel: {
+          rotate: 30
+        },
+        data: [],
+      },
+      yAxis: {},
+      series: [
+        {
+          name: 'Cijena',
+          type: 'bar',
+          colorBy: 'data',
+          label: {
+            show: true,
+            position: 'top'
+          },
+          data: [],
+          animationDelay: (idx) => idx * 10,
+        }
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx) => idx * 5,
+    };
+  }
 
   ngOnInit(): void {
+    console.log('ngOnInit');
     this.update.subscribe(response => {
-        const cost = [];
-        this.dataService.bills.forEach((bills, index) => {
-          let sum = 0;
-          bills.forEach((bill) => {
-            sum += +bill.cost;
-          });
-          cost.push({value: sum, name: this.dataService.types[index]});
-        });
         if (response) {
           this.options = {
             tooltip: {
@@ -52,7 +81,7 @@ export class BarChartComponent implements OnInit {
                   show: true,
                   position: 'top'
                 },
-                data: cost,
+                data: this.data,
                 animationDelay: (idx) => idx * 10,
               }
             ],
