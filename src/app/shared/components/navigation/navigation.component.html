@@ -10,7 +10,7 @@
             <li class="hrt"><a role="link" routerLink='/detail' [queryParams]="{ type: 'hrt'}"><i class="icon hrt"></i><span [className]="type === 'hrt' ? 'bold' : ''">HRT</span></a></li>
             <li class="telecom"><a role="link" routerLink='/detail' [queryParams]="{ type: 'telecom'}"><i class="icon telecom"></i><span [className]="type === 'telecom' ? 'bold' : ''">Telekomunikacije</span></a></li>
             <li class="break"></li>
-            <li class="export"><a role="link" routerLink='/export' [queryParams]="{ type: 'export'}"><i class="icon export" [className]="type === 'export' ? 'icon export bold' : 'icon export'"></i><span>Ispis</span></a></li>
+            <li class="export"><a role="link" (click)="openExportDialog()"><i class="icon export" [className]="type === 'export' ? 'icon export bold' : 'icon export'"></i><span>Ispis</span></a></li>
             <li class="break"></li>
             <li class="logout"><a role="link" routerLink='/login' (click)="signOut()" class="headerText logout"><i class="fas fa-sign-out-alt"></i><span class="afterIcon">Odjava</span></a></li>
         </ul>

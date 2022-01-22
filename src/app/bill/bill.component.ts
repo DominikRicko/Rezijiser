@@ -7,7 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Bill } from '../_model/Bill';
 import { BillBuilder } from '../_model/BillBuilder';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-bill',
