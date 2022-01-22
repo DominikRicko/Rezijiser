@@ -20,7 +20,7 @@
   <br>
   <mat-form-field class="form-input">
     <mat-label>Tip</mat-label>
-    <mat-select required disabled="{{isEdit}}" formControlName="type" [(ngModel)]="bill.type">
+    <mat-select required (disabled)=(isEdit) formControlName="type" [(ngModel)]="bill.type">
       <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }} </mat-option>
     </mat-select>
   </mat-form-field>
