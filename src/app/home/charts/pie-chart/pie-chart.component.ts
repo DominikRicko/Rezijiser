@@ -48,10 +48,6 @@ export class PieChartComponent implements OnInit {
             types.push(it.name);
           });
           this.options = {
-            title: {
-              text: 'Pita',
-              x: 'center'
-            },
             tooltip: {
               trigger: 'item',
               formatter: '{a} <br/>{b} : {c} kn ({d}%)'

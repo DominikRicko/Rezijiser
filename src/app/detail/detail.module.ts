@@ -13,7 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import {CustomDatePipe} from "../_helpers/customDate.pipe";
+import {CustomDatePipe} from '../_helpers/customDate.pipe';
 
 @NgModule({
   declarations: [DetailComponent, CustomDatePipe],

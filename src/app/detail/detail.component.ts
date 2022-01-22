@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../_services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
-import {AbstractControl, FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import { Bill } from '../_model/Bill';
 
@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit {
   counterType = ['power', 'water', 'gas'];
   dataSource: MatTableDataSource<Bill>;
   type: string;
-  formControl: AbstractControl;
+  formControl: FormGroup;
   datePipe = new DatePipe('en-US');
 
   constructor(

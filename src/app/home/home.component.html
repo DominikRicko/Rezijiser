@@ -25,7 +25,22 @@
       <mat-card class="card">
         <mat-card-title>Datum</mat-card-title>
         <mat-card-content>
-
+          <form [formGroup]="formControl">
+            <mat-form-field class="form-input fixed-width">
+              <mat-label>Od:</mat-label>
+              <input matInput [matDatepicker]="startingDatePicker" formControlName="startingDate"  [(ngModel)]="startingDate">
+              <mat-datepicker-toggle matSuffix [for]="startingDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #startingDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="form-input fixed-width">
+              <mat-label>Do:</mat-label>
+              <input matInput [matDatepicker]="endingDatePicker" formControlName="endingDate"  [(ngModel)]="endingDate">
+              <mat-datepicker-toggle matSuffix [for]="endingDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #endingDatePicker></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="filterRefreshData()" class="button-spacing"> Filtriraj </button>
+            <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter </button>
+          </form>
         </mat-card-content>
       </mat-card>
     </div>
