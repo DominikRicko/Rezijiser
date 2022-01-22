@@ -42,6 +42,9 @@ export class HomeComponent implements OnInit {
   getSumByBillType(): {value: string; name: string}[]{
     const cost = [];
     this.dataService.bills.forEach((bills, index) => {
+      if(bills.length === 0){
+        return;
+      }
       let sum = 0;
       bills.forEach((bill) => {
         sum += +bill.cost;
@@ -55,6 +58,9 @@ export class HomeComponent implements OnInit {
   getMaxByBillType(): {value: string; name: string; date: string}[]{
     const cost = [];
     this.dataService.bills.forEach((bills, index) => {
+      if(bills.length === 0){
+        return;
+      }
       let maxIndex = 0;
       bills.forEach((bill, index2) => {
         if(Number.parseFloat(bills[maxIndex].cost) < Number.parseFloat(bill.cost)){
@@ -73,6 +79,9 @@ export class HomeComponent implements OnInit {
   getMinByBillType(): {value: string; name: string; date: string}[]{
     const cost = [];
     this.dataService.bills.forEach((bills, index) => {
+      if(bills.length === 0){
+        return;
+      }
       let minIndex = 0;
       bills.forEach((bill, index2) => {
         if(Number.parseFloat(bills[minIndex].cost) > Number.parseFloat(bill.cost)){
@@ -91,6 +100,9 @@ export class HomeComponent implements OnInit {
   getAverageByBillType(): {value: string; name: string}[]{
     const cost = [];
     this.dataService.bills.forEach((bills, index) => {
+      if(bills.length === 0){
+        return;
+      }
       let avg = 0;
       bills.forEach((bill) => {
         avg += +bill.cost;
