@@ -43,13 +43,13 @@ export class ExportComponent implements OnInit {
         // otherwise only Chrome works like it should
         const newBlob = new Blob([response.body]);
 
-        console.log(response);
         // For other browsers:
         // Create a link pointing to the ObjectURL containing the blob.
         const data = window.URL.createObjectURL(newBlob);
 
         const link = document.createElement('a');
         link.href = data;
+        link.target = '_blank';
         link.download = (this.exportType === 'pdf')?('export.pdf'):('export.xlsx'); //Cannot get content-disposition header...
         // this is necessary as link.click() does not work on the latest firefox
         link.dispatchEvent(
