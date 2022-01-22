@@ -9,6 +9,10 @@ import {Subject} from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public sumData = null;
+  public avgData = null;
+  public maxData = null;
+  public minData = null;
   types = ['Struja', 'Voda', 'Plin', 'Pričuva', 'Odvoz smeća', 'Komunalac', 'HRT', 'Telekomunikacije'];
   typeValue = ['power', 'water', 'gas', 'reservation', 'trash', 'communal', 'hrt', 'telecom'];
   update: Subject<boolean> = new Subject<boolean>();
@@ -23,6 +27,7 @@ export class HomeComponent implements OnInit {
       this.billService.getAll(type).subscribe((bills) => {
         this.dataService.bills.push(bills);
         this.dataService.types.push(this.types[this.typeValue.indexOf(type)]);
+        this.refreshData(); //this is clearly inefficient way to solve a stupid problem of infinite loop between components.
       },
         (error) => { console.log(error); },
         () => {
@@ -33,9 +38,14 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+    console.log(this.sumData);
   }
 
   refreshData(){
+    this.sumData = this.getSumByBillType();
+    this.avgData = this.getAverageByBillType();
+    this.maxData = this.getMaxByBillType();
+    this.minData = this.getMinByBillType();
     this.update.next(true);
   }
 
@@ -51,7 +61,6 @@ export class HomeComponent implements OnInit {
       });
       cost.push({value: sum.toFixed(2), name: this.dataService.types[index]});
     });
-    this.refreshData();
     return cost;
   }
 
@@ -72,7 +81,6 @@ export class HomeComponent implements OnInit {
         name: this.dataService.types[index], date: bills[maxIndex].payday
       });
     });
-    this.refreshData();
     return cost;
   }
 
@@ -93,7 +101,6 @@ export class HomeComponent implements OnInit {
           name: this.dataService.types[index], date: bills[minIndex].payday
         });
     });
-    this.refreshData();
     return cost;
   }
 
@@ -110,7 +117,6 @@ export class HomeComponent implements OnInit {
       avg /= bills.length;
       cost.push({value: avg.toFixed(2), name: this.dataService.types[index]});
     });
-    this.refreshData();
     return cost;
   }
 

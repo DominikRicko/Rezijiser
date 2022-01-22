@@ -7,7 +7,7 @@
       <mat-card class="card">
         <mat-card-title>Ukupni troškovi</mat-card-title>
         <mat-card-content>
-          <app-bar-chart [update]="update" [data]="getSumByBillType()"></app-bar-chart>
+          <app-bar-chart [update]="update" [data]="sumData"></app-bar-chart>
         </mat-card-content>
       </mat-card>
     </div>
@@ -16,7 +16,7 @@
       <mat-card class="card">
         <mat-card-title>Ukupni troškovi</mat-card-title>
         <mat-card-content>
-          <app-pie-chart [update]="update" [data]="getSumByBillType()"></app-pie-chart>
+          <app-pie-chart [update]="update" [data]="sumData"></app-pie-chart>
         </mat-card-content>
       </mat-card>
     </div>
@@ -34,7 +34,7 @@
       <mat-card class="card">
         <mat-card-title>Najmanji račun</mat-card-title>
         <mat-card-content>
-          <app-bar-chart [update]="update" [data]="getMinByBillType()"></app-bar-chart>
+          <app-bar-chart [update]="update" [data]="minData"></app-bar-chart>
         </mat-card-content>
       </mat-card>
     </div>
@@ -43,7 +43,7 @@
       <mat-card class="card">
         <mat-card-title>Najveći račun</mat-card-title>
         <mat-card-content>
-          <app-bar-chart [update]="update" [data]="getMaxByBillType()"></app-bar-chart>
+          <app-bar-chart [update]="update" [data]="maxData"></app-bar-chart>
         </mat-card-content>
       </mat-card>
     </div>
@@ -52,7 +52,7 @@
       <mat-card class="card">
         <mat-card-title>Prosjećni račun</mat-card-title>
         <mat-card-content>
-          <app-bar-chart [update]="update" [data]="getAverageByBillType()"></app-bar-chart>
+          <app-bar-chart [update]="update" [data]="avgData"></app-bar-chart>
         </mat-card-content>
       </mat-card>
     </div>

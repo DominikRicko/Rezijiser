@@ -6,13 +6,13 @@
 
   <div class="divider"></div>
 
-  <div>
+  <div class="element">
     <button (click)="openAddBillDialog()" class="btn-new"></button>
   </div>
   
   <div ngbDropdown>
     <i ngbDropdownToggle class="fas fa-envelope"></i>
-    <div ngbDropdownMenu>
+    <div ngbDropdownMenu class="fix-dropdown">
       <app-notification></app-notification>
     </div>
   </div>
