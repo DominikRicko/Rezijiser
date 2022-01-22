@@ -1,30 +1,51 @@
-<mat-card>
+<mat-card class="col-12 card">
   <mat-card-title>Statistika</mat-card-title>
   <mat-card-content>
-    <mat-card>
-      <mat-card-title>Najmanji račun</mat-card-title>
-      <mat-card-content>
-        <p>Cijena: {{minBill.cost | number : '1.2-2'}} kn</p>
-        <p>Datum: {{minBill.payday | customFormat}}</p>
-        <p>Tip: {{minBill.type}}</p>
+    <mat-card class="col-12 card">
+      <mat-card-title>Najmanji računi</mat-card-title>
+      <mat-card-content class="col-12 stats">
+        <mat-card *ngFor="let minB of minBill" class="col-1 card">
+          <mat-card-subtitle>{{minB.type}}</mat-card-subtitle>
+          <mat-card-content>
+            <p>Cijena: {{minB.cost | number : '1.2-2'}} kn</p>
+            <p>Datum: {{minB.payday | customFormat}}</p>
+          </mat-card-content>
+        </mat-card>
       </mat-card-content>
     </mat-card>
     <br>
-    <mat-card>
-      <mat-card-title>Najveći račun</mat-card-title>
-      <mat-card-content>
-        <p>Cijena: {{maxBill.cost | number : '1.2-2'}} kn</p>
-        <p>Datum: {{maxBill.payday | customFormat}}</p>
-        <p>Tip: {{maxBill.type}}</p>
+    <mat-card class="col-12 card">
+      <mat-card-title>Najveći računi</mat-card-title>
+      <mat-card-content class="col-12 stats">
+        <mat-card *ngFor="let maxB of maxBill">
+          <mat-card-subtitle>{{maxB.type}}</mat-card-subtitle>
+          <mat-card-content>
+            <p>Cijena: {{maxB.cost | number : '1.2-2'}} kn</p>
+            <p>Datum: {{maxB.payday | customFormat}}</p>
+          </mat-card-content>
+        </mat-card>
       </mat-card-content>
     </mat-card>
     <br>
-    <mat-card>
+    <mat-card class="col-12 card">
       <mat-card-title>Prosječni račun</mat-card-title>
-      <mat-card-content>
-        <p>Cijena: {{avgBill | number : '1.2-2'}} kn</p>
-        <p>Ukupan broj računa: {{numOfBills}}</p>
+      <mat-card-content class="col-12 stats">
+        <mat-card>
+          <mat-card-subtitle>Ukupno</mat-card-subtitle>
+          <mat-card-content>
+            <p>Cijena: {{avgAllBills | number : '1.2-2'}} kn</p>
+            <p>Broj računa: {{numOfAllBills}}</p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngFor="let avg of avgPerType">
+          <mat-card-subtitle>{{avg.type}}</mat-card-subtitle>
+          <mat-card-content>
+            <p>Cijena: {{avg.cost | number : '1.2-2'}} kn</p>
+            <p>Broj računa: {{avg.billNum}}</p>
+          </mat-card-content>
+        </mat-card>
       </mat-card-content>
     </mat-card>
+
   </mat-card-content>
 </mat-card>

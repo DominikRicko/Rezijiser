@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   options: any;
   selectedType = 'gas';
   update: Subject<boolean> = new Subject<boolean>();
+  private counter = 0;
 
   constructor(private billService: BillService, public dataService: DataService) { }
 
@@ -27,7 +28,11 @@ export class HomeComponent implements OnInit {
       },
         (error) => { console.log(error); },
         () => {
-        this.refreshData();
+        this.counter++;
+        if (this.counter === 8) {
+          this.refreshData();
+          this.counter = 0;
+        }
       });
     });
   }
