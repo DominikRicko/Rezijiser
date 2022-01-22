@@ -15,38 +15,47 @@ export class HomeComponent implements OnInit {
   public minData = null;
   types = ['Struja', 'Voda', 'Plin', 'Pričuva', 'Odvoz smeća', 'Komunalac', 'HRT', 'Telekomunikacije'];
   typeValue = ['power', 'water', 'gas', 'reservation', 'trash', 'communal', 'hrt', 'telecom'];
-  update: Subject<boolean> = new Subject<boolean>();
-  private counter = 0;
 
-  constructor(private billService: BillService, public dataService: DataService) { }
+  private sumSubject = new Subject<{value: string; name: string}[]>();
+  private avgSubject = new Subject<{value: string; name: string}[]>();
+  private minSubject = new Subject<{value: string; name: string; date: string}[]>();
+  private maxSubject = new Subject<{value: string; name: string; date: string}[]>();
+
+  constructor(private billService: BillService, public dataService: DataService) {
+
+    this.sumData = this.sumSubject.asObservable();
+    this.avgData = this.avgSubject.asObservable();
+    this.maxData = this.maxSubject.asObservable();
+    this.minData = this.minSubject.asObservable();
+
+   }
 
   ngOnInit(): void {
+    const subject = new Subject<boolean>();
+    let counter = 0;
     this.dataService.bills = [];
     this.dataService.types = [];
     this.typeValue.forEach((type) => {
       this.billService.getAll(type).subscribe((bills) => {
         this.dataService.bills.push(bills);
         this.dataService.types.push(this.types[this.typeValue.indexOf(type)]);
-        this.refreshData(); //this is clearly inefficient way to solve a stupid problem of infinite loop between components.
-      },
-        (error) => { console.log(error); },
-        () => {
-        this.counter++;
-        if (this.counter === 8) {
-          this.refreshData();
-          this.counter = 0;
-        }
-      });
+        subject.next(true);
+      }, (error) => { console.log(error); });
     });
-    console.log(this.sumData);
+
+    subject.subscribe((value) => {
+      counter++;
+      if(counter === 8){
+        this.refreshData();
+      }
+    });
   }
 
   refreshData(){
-    this.sumData = this.getSumByBillType();
-    this.avgData = this.getAverageByBillType();
-    this.maxData = this.getMaxByBillType();
-    this.minData = this.getMinByBillType();
-    this.update.next(true);
+    this.sumSubject.next(this.getSumByBillType());
+    this.avgSubject.next(this.getAverageByBillType());
+    this.maxSubject.next(this.getMaxByBillType());
+    this.minSubject.next(this.getMinByBillType());
   }
 
   getSumByBillType(): {value: string; name: string}[]{

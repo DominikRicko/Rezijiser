@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
-import {Observable, Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,8 +9,7 @@ import {Observable, Subject} from 'rxjs';
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() data: {value: string; name: string; date?: string}[];
-  @Input() update: Observable<boolean>;
+  @Input() data: Observable<{value: string; name: string; date?: string}[]>;
   options: any;
 
   constructor(public dataService: DataService) {
@@ -51,14 +50,17 @@ export class BarChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
-    this.update.subscribe(response => {
-        if (response) {
+    this.data.subscribe(data => {
+        if (data) {
+          const types: string[] = [];
+          data.forEach(it => {
+            types.push(it.name);
+          });
           this.options = {
             tooltip: {
               trigger: 'item',
               formatter: (params)=>{
-                if(this.data.length > 0 && this.data[0].date){
+                if(data.length > 0 && data[0].date){
                   return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK<br/>Datum: ${params.data.date}`;
                 } else {
                   return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK`;
@@ -75,7 +77,7 @@ export class BarChartComponent implements OnInit {
               axisLabel: {
                 rotate: 30
               },
-              data: this.dataService.types,
+              data: types,
             },
             yAxis: {},
             series: [
@@ -87,7 +89,7 @@ export class BarChartComponent implements OnInit {
                   show: true,
                   position: 'top'
                 },
-                data: this.data,
+                data,
                 animationDelay: (idx) => idx * 10,
               }
             ],

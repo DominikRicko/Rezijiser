@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable} from 'rxjs';
 import {DataService} from '../../../_services/data.service';
 
 @Component({
@@ -9,8 +9,7 @@ import {DataService} from '../../../_services/data.service';
 })
 export class PieChartComponent implements OnInit {
 
-  @Input() update: Subject<boolean> = new Subject<boolean>();
-  @Input() data: {value: string; name: string}[];
+  @Input() data: Observable<{value: string; name: string}[]>;
   options: any;
 
   constructor(public dataService: DataService) {
@@ -42,8 +41,12 @@ export class PieChartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.update.subscribe(response => {
-        if (response) {
+    this.data.subscribe(data => {
+        if (data) {
+          const types: string[] = [];
+          data.forEach(it => {
+            types.push(it.name);
+          });
           this.options = {
             title: {
               text: 'Pita',
@@ -56,7 +59,7 @@ export class PieChartComponent implements OnInit {
             legend: {
               x: 'center',
               y: 'bottom',
-              data: this.dataService.types
+              data: types
             },
             calculable: true,
             series: [
@@ -65,7 +68,7 @@ export class PieChartComponent implements OnInit {
                 type: 'pie',
                 radius: [30, 110],
                 roseType: 'area',
-                data: this.data
+                data
               }
             ]
           };
