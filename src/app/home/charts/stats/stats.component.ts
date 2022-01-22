@@ -29,8 +29,6 @@ export class StatsComponent implements OnInit {
         let tempMaxBill = BillBuilder.build();
         let max = Number.MIN_VALUE;
         let min = Number.MAX_VALUE;
-        tempMinBill.type = this.dataService.types[index];
-        tempMaxBill.type = this.dataService.types[index];
         let sum = 0;
         let numOfBills = 0;
         bills.forEach((bill) => {
@@ -48,6 +46,8 @@ export class StatsComponent implements OnInit {
           numOfAllBills++;
         });
         this.avgPerType.push({cost: (sum / numOfBills), billNum: numOfBills, type: this.dataService.types[index]});
+        tempMinBill.type = this.dataService.types[index];
+        tempMaxBill.type = this.dataService.types[index];
         this.minBill.push(tempMinBill);
         this.maxBill.push(tempMaxBill);
       });
