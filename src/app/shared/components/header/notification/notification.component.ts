@@ -9,19 +9,26 @@ import {NotificationService} from '../../../../_services/notification.service';
 })
 export class NotificationComponent implements OnInit {
 
-  notifications: Notification[] = [];
+  notificationsAll: Notification[] = [];
+  notificationsUnchecked: Notification[] = [];
 
   constructor(private notificationService: NotificationService) { }
 
   ngOnInit(): void {
+    this.refresh();
+  }
+
+  refresh() {
     this.notificationService.getAll().subscribe((data) => {
-      this.notifications = data;
+      this.notificationsAll = data;
+      this.notificationsUnchecked = data.filter((notification) => notification.checked === false);
     });
   }
 
   checkNotification(id: number) {
     this.notificationService.checkNotification(id).subscribe((data) => {
       console.log(data);
+      this.refresh();
     });
   }
 }

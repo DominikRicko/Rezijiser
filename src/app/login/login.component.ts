@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import {UserService} from '../_services/user.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -14,14 +15,15 @@ export class LoginComponent implements OnInit {
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
-  errorMessage = '';
   user: any = {};
 
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -42,11 +44,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home']);
           });
         },
-        err => {
+        (err) => {
           console.log(err);
-          this.errorMessage = err.error.message;
+          this.snackBar.open('Greška prilikom prijave.', null, {duration: 2500});
           this.isLoginFailed = true;
-        }
+        },
+        () => { this.snackBar.open('Uspješna prijava.', null, {duration: 2500}); }
       );
   }
 
