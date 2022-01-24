@@ -27,7 +27,7 @@
         <input matInput type="password" formControlName="password">
         <mat-error *ngIf="password.hasError('required')">Lozinka nedostaje</mat-error>
         <mat-error *ngIf="password.hasError('pattern')">Lozinka nije dobra</mat-error>
-        <mat-hint>min. 6 znakova, veliko i malo slovo, broj, simbol</mat-hint>
+        <mat-hint>min. 8 znakova, veliko i malo slovo, broj, simbol</mat-hint>
       </mat-form-field>
       <div class="col-md-12">
         <button [disabled]="!formControl.valid" (click)="onSubmit()" class="btn btn-primary btn-block">Registriraj se
