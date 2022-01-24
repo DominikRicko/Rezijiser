@@ -12,7 +12,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class RegisterComponent implements OnInit {
   isSuccessful = false;
 
-  reg = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/);
+  reg = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W])[A-Za-z\d\W]{8,}$/);
   name = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   surname = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   email = new FormControl('', [Validators.required, Validators.email]);
