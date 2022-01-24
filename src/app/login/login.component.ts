@@ -47,18 +47,12 @@ export class LoginComponent implements OnInit {
           this.user = user;
           this.isLoggedIn = true;
           this.router.navigate(['/home']);
+          this.snackBar.open('Uspješna prijava.', null, {duration: 2500});
         });
       },
       (err) => {
         console.log(err);
         this.snackBar.open('Greška prilikom prijave.', null, {duration: 2500});
-      },
-      () => {
-        if (this.isLoggedIn) {
-          this.snackBar.open('Uspješna prijava.', null, {duration: 2500});
-        } else {
-          this.snackBar.open('Prijava nije uspješna.', null, {duration: 2500});
-        }
       }
     );
   }
