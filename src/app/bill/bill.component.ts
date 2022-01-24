@@ -7,7 +7,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Bill} from '../_model/Bill';
 import {BillBuilder} from '../_model/BillBuilder';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-bill',
@@ -62,6 +62,8 @@ export class BillComponent implements OnInit {
     if (!this.isEdit) {
       this.billService.saveBill(newBill, this.bill.type).subscribe(
         (data) => {
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['detail'], {queryParams: {type: this.bill.type}});
         },
         (error) => {
@@ -75,6 +77,8 @@ export class BillComponent implements OnInit {
     } else {
       this.billService.updateBill(newBill, this.bill.type).subscribe(
         (data) => {
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
           this.router.navigate(['detail'], {queryParams: {type: this.bill.type}});
         },
         (error) => {
@@ -86,14 +90,9 @@ export class BillComponent implements OnInit {
         }
       );
     }
-
   }
 
   cancel() {
     this.dialogRef.close();
-  }
-
-  private formatDate(date) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
   }
 }

@@ -1,33 +1,33 @@
 <form [formGroup]="formControl">
-  <mat-form-field class="form-input">
+  <mat-form-field class="form-input" appearance="outline">
     <mat-label>Datum dospijeća</mat-label>
     <input matInput required [matDatepicker]="paydayPicker" formControlName="payday" [(ngModel)]="bill.payday">
     <mat-datepicker-toggle matSuffix [for]="paydayPicker"></mat-datepicker-toggle>
     <mat-datepicker #paydayPicker></mat-datepicker>
   </mat-form-field>
   <br>
-  <mat-form-field class="form-input">
+  <mat-form-field class="form-input" appearance="outline">
     <mat-label>Datum plaćanja</mat-label>
     <input matInput [matDatepicker]="datePaidPicker" formControlName="datePaid" [(ngModel)]="bill.datePaid">
     <mat-datepicker-toggle matSuffix [for]="datePaidPicker"></mat-datepicker-toggle>
     <mat-datepicker #datePaidPicker></mat-datepicker>
   </mat-form-field>
   <br>
-  <mat-form-field class="form-input">
+  <mat-form-field class="form-input" appearance="outline">
     <mat-label>Cijena</mat-label>
     <input matInput required formControlName="cost" [(ngModel)]="bill.cost">
   </mat-form-field>
   <br>
-  <mat-form-field class="form-input">
+  <mat-form-field class="form-input" appearance="outline">
     <mat-label>Tip</mat-label>
-    <mat-select required (disabled)=(isEdit) formControlName="type" [(ngModel)]="bill.type">
+    <mat-select required [disabled]="isEdit" formControlName="type" [(ngModel)]="bill.type">
       <mat-option *ngFor="let type of types" [value]="typeValue[types.indexOf(type)]"> {{ type }} </mat-option>
     </mat-select>
   </mat-form-field>
   <br>
-  <mat-form-field class="form-input" *ngIf="counterType.includes(bill.type)">
+  <mat-form-field class="form-input" *ngIf="counterType.includes(bill.type)" appearance="outline">
     <mat-label>Potrošnja</mat-label>
-    <input matInput required formControlName="counter" [(ngModel)]="bill.counter">
+    <input matInput [required]="counterType.includes(bill.type)" formControlName="counter" [(ngModel)]="bill.counter">
   </mat-form-field>
   <br>
   <div class="form-buttons">
