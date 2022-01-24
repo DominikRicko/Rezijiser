@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Notification} from '../../../../_model/notification';
 import {NotificationService} from '../../../../_services/notification.service';
 
@@ -12,7 +12,8 @@ export class NotificationComponent implements OnInit {
   notificationsAll: Notification[] = [];
   notificationsUnchecked: Notification[] = [];
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService) {
+  }
 
   ngOnInit(): void {
     this.refresh();

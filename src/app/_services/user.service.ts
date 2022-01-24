@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+/* eslint-disable @typescript-eslint/naming-convention */
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from './token-storage.service';
@@ -11,7 +12,8 @@ const API_URL = 'http://localhost:8080/';
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  }
 
   getUser(): Observable<any> {
     const httpOptions = {

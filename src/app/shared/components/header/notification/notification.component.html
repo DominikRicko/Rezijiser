@@ -1,5 +1,6 @@
-<mat-card *ngFor="let notification of notificationsUnchecked" class="{{notification.type.toLowerCase()}}"
-  (click)="checkNotification(notification.id)" class="notification-card">
+<mat-card *ngFor="let notification of notificationsUnchecked"
+          class="{{notification.type.toLowerCase()}} notification-card"
+          (click)="checkNotification(notification.id)">
   <mat-card-title class="title">{{notification.title}}</mat-card-title>
   <mat-card-subtitle class="subtitle">{{notification.timeCreated}}</mat-card-subtitle>
   <mat-card-content>

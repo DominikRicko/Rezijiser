@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BarChartRoutingModule } from './bar-chart-routing.module';
+import {BarChartRoutingModule} from './bar-chart-routing.module';
 
 
 @NgModule({
@@ -11,4 +11,5 @@ import { BarChartRoutingModule } from './bar-chart-routing.module';
     BarChartRoutingModule
   ]
 })
-export class BarChartModule { }
+export class BarChartModule {
+}

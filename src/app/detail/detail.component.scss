@@ -1,44 +1,44 @@
-:host{
+:host {
   margin: 0;
   padding: 0;
   height: 100%;
   min-height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column-reverse;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.fix-container{
+.fix-container {
   display: flex;
   flex-direction: row;
 }
 
-.remove-spacing{
+.remove-spacing {
   margin: 0;
   padding: 0;
 }
 
-.full-view{
+.full-view {
   display: flex;
   flex-flow: column;
   margin: 5px
 }
 
-.full-row{
+.full-row {
   padding: 10px 10px 0;
 
-  mat-form-field{
+  mat-form-field {
     padding: 0 5px;
   }
 }
 
-.full-table{
+.full-table {
   height: 100%;
   padding: 0 20px;
   width: auto;
 }
 
-.button-spacing{
+.button-spacing {
   margin: 0 5px;
 }
 
@@ -46,49 +46,49 @@
   justify-content: center;
 }
 
-.background{
+.background {
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
 }
 
-.background-power{
+.background-power {
   background-image: url("../../assets/power-background.jpg");
 }
 
-.background-water{
+.background-water {
   background-image: url("../../assets/water-background.jpg");
 }
 
-.background-gas{
+.background-gas {
   background-image: url("../../assets/gas-background.jpg");
 }
 
-.background-reservation{
+.background-reservation {
   background-image: url("../../assets/reservation-background.jpg");
 }
 
-.background-trash{
+.background-trash {
   background-image: url("../../assets/trash-background.jpg");
 }
 
-.background-communal{
+.background-communal {
   background-image: url("../../assets/communal-background.jpg");
 }
 
-.background-hrt{
+.background-hrt {
   background-image: url("../../assets/hrt-background.jpg");
 }
 
-.background-telecom{
+.background-telecom {
   background-image: url("../../assets/telecom-background.jpg");
 }
 
-.solid-background{
+.solid-background {
   background: white;
 }
 
-.transparent{
+.transparent {
   opacity: 80%;
   will-change: contents;
 }

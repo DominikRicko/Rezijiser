@@ -1,28 +1,29 @@
 <form [formGroup]="formControl">
-    <mat-form-field class="form-input">
-      <mat-label>Od</mat-label>
-      <input matInput required [matDatepicker]="startingDatePicker" formControlName="startingDate" [(ngModel)]="startingDate">
-      <mat-datepicker-toggle matSuffix [for]="startingDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #startingDatePicker></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="form-input">
-      <mat-label>Do</mat-label>
-      <input matInput [matDatepicker]="endingDatePicker" formControlName="endingDate"  [(ngModel)]="endingDate">
-      <mat-datepicker-toggle matSuffix [for]="endingDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #endingDatePicker></mat-datepicker>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="form-input">
-      <mat-label>Tip datoteke</mat-label>
-      <mat-select required formControlName="exportType" [(ngModel)]="exportType">
-        <mat-option *ngFor="let type of exportTypes" [value]="exportTypes[exportTypes.indexOf(type)]"> {{ type }} </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    <div class="form-buttons">
-      <button mat-raised-button [disabled]="!formControl.valid" (click)="onSubmit()">Izvezi</button>
-      <button mat-raised-button (click)="cancel()">Otkaži</button>
-    </div>
-  </form>
-  
+  <mat-form-field class="form-input">
+    <mat-label>Od</mat-label>
+    <input matInput required [matDatepicker]="startingDatePicker" formControlName="startingDate"
+           [(ngModel)]="startingDate">
+    <mat-datepicker-toggle matSuffix [for]="startingDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startingDatePicker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="form-input">
+    <mat-label>Do</mat-label>
+    <input matInput [matDatepicker]="endingDatePicker" formControlName="endingDate" [(ngModel)]="endingDate">
+    <mat-datepicker-toggle matSuffix [for]="endingDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endingDatePicker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="form-input">
+    <mat-label>Tip datoteke</mat-label>
+    <mat-select required formControlName="exportType" [(ngModel)]="exportType">
+      <mat-option *ngFor="let type of exportTypes"
+                  [value]="exportTypes[exportTypes.indexOf(type)]"> {{ type }} </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <div class="form-buttons">
+    <button mat-raised-button [disabled]="!formControl.valid" (click)="onSubmit()">Izvezi</button>
+    <button mat-raised-button (click)="cancel()">Otkaži</button>
+  </div>
+</form>

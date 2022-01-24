@@ -9,7 +9,7 @@ import {DataService} from '../../../_services/data.service';
 })
 export class PieChartComponent implements OnInit {
 
-  @Input() data: Observable<{value: string; name: string}[]>;
+  @Input() data: Observable<{ value: string; name: string }[]>;
   options: any;
 
   constructor(public dataService: DataService) {
@@ -38,37 +38,37 @@ export class PieChartComponent implements OnInit {
         }
       ]
     };
-   }
+  }
 
   ngOnInit(): void {
     this.data.subscribe(data => {
-        if (data) {
-          const types: string[] = [];
-          data.forEach(it => {
-            types.push(it.name);
-          });
-          this.options = {
-            tooltip: {
-              trigger: 'item',
-              formatter: '{a} <br/>{b} : {c} kn ({d}%)'
-            },
-            legend: {
-              x: 'center',
-              y: 'bottom',
-              data: types
-            },
-            calculable: true,
-            series: [
-              {
-                name: 'Udio',
-                type: 'pie',
-                radius: [30, 110],
-                roseType: 'area',
-                data
-              }
-            ]
-          };
-        }
+      if (data) {
+        const types: string[] = [];
+        data.forEach(it => {
+          types.push(it.name);
+        });
+        this.options = {
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} kn ({d}%)'
+          },
+          legend: {
+            x: 'center',
+            y: 'bottom',
+            data: types
+          },
+          calculable: true,
+          series: [
+            {
+              name: 'Udio',
+              type: 'pie',
+              radius: [30, 110],
+              roseType: 'area',
+              data
+            }
+          ]
+        };
+      }
     });
   }
 

@@ -9,7 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import { Bill } from '../_model/Bill';
+import {Bill} from '../_model/Bill';
 
 @Component({
   selector: 'app-detail',
@@ -56,7 +56,7 @@ export class DetailComponent implements OnInit {
       }
       this.billService.getAll(this.type).subscribe((data) => {
         this.dataSource = new MatTableDataSource<Bill>(data);
-        this.sort.sort(({ id: 'payday', start: 'desc'} as MatSortable));
+        this.sort.sort(({id: 'payday', start: 'desc'} as MatSortable));
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.dataSource.filterPredicate = ((row, filter) => {
@@ -88,7 +88,6 @@ export class DetailComponent implements OnInit {
         }) as (Bill) => boolean;
       });
     });
-
   }
 
   refreshTable() {
@@ -98,8 +97,11 @@ export class DetailComponent implements OnInit {
   }
 
   isPaid(datePaid: Date): string {
-    if (datePaid != null) { return ' Da '; }
-    else { return ' Ne '; }
+    if (datePaid != null) {
+      return ' Da ';
+    } else {
+      return ' Ne ';
+    }
   }
 
   delete(detail: Bill): void {
@@ -114,7 +116,6 @@ export class DetailComponent implements OnInit {
     this.dialog.open(BillComponent, {
       data: true
     });
-    //this.router.navigate(['bill'], { queryParams: { action: 'edit' } });
   }
 
   resetFilter() {

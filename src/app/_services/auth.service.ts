@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+/* eslint-disable @typescript-eslint/naming-convention */
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 const AUTH_API = 'http://localhost:8080/';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer' })
+  headers: new HttpHeaders({'Content-Type': 'application/json', Authorization: 'Bearer'})
 };
 
 @Injectable({
@@ -13,7 +14,8 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   login(credentials): Observable<any> {
     return this.http.post(AUTH_API + 'login', {

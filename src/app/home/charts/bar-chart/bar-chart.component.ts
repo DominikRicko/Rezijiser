@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() data: Observable<{value: string; name: string; date?: string}[]>;
+  @Input() data: Observable<{ value: string; name: string; date?: string }[]>;
   options: any;
 
   constructor(public dataService: DataService) {
@@ -51,52 +51,52 @@ export class BarChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.subscribe(data => {
-        if (data) {
-          const types: string[] = [];
-          data.forEach(it => {
-            types.push(it.name);
-          });
-          this.options = {
-            tooltip: {
-              trigger: 'item',
-              formatter: (params)=>{
-                if(data.length > 0 && data[0].date){
-                  return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK<br/>Datum: ${params.data.date}`;
-                } else {
-                  return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK`;
-                }
+      if (data) {
+        const types: string[] = [];
+        data.forEach(it => {
+          types.push(it.name);
+        });
+        this.options = {
+          tooltip: {
+            trigger: 'item',
+            formatter: (params) => {
+              if (data.length > 0 && data[0].date) {
+                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK<br/>Datum: ${params.data.date}`;
+              } else {
+                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK`;
               }
+            }
+          },
+          xAxis: {
+            type: 'category',
+            silent: true,
+            boundaryGap: true,
+            axisTick: {
+              alignWithLabel: true
             },
-            xAxis: {
-              type: 'category',
-              silent: true,
-              boundaryGap: true,
-              axisTick: {
-                alignWithLabel: true
-              },
-              axisLabel: {
-                rotate: 30
-              },
-              data: types,
+            axisLabel: {
+              rotate: 30
             },
-            yAxis: {},
-            series: [
-              {
-                name: 'Cijena',
-                type: 'bar',
-                colorBy: 'data',
-                label: {
-                  show: true,
-                  position: 'top'
-                },
-                data,
-                animationDelay: (idx) => idx * 10,
-              }
-            ],
-            animationEasing: 'elasticOut',
-            animationDelayUpdate: (idx) => idx * 5,
-          };
-        }
+            data: types,
+          },
+          yAxis: {},
+          series: [
+            {
+              name: 'Cijena',
+              type: 'bar',
+              colorBy: 'data',
+              label: {
+                show: true,
+                position: 'top'
+              },
+              data,
+              animationDelay: (idx) => idx * 10,
+            }
+          ],
+          animationEasing: 'elasticOut',
+          animationDelayUpdate: (idx) => idx * 5,
+        };
+      }
     });
   }
 }

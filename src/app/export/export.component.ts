@@ -1,9 +1,9 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ExportService } from '../_services/export.service';
+import {DatePipe} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ExportService} from '../_services/export.service';
 
 @Component({
   selector: 'app-export',
@@ -27,9 +27,11 @@ export class ExportComponent implements OnInit {
     private exportService: ExportService,
     public dialogRef: MatDialogRef<ExportComponent>,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSubmit() {
     this.exportService
@@ -50,7 +52,7 @@ export class ExportComponent implements OnInit {
         const link = document.createElement('a');
         link.href = data;
         link.target = '_blank';
-        link.download = (this.exportType === 'pdf')?('export.pdf'):('export.xlsx'); //Cannot get content-disposition header...
+        link.download = (this.exportType === 'pdf') ? ('export.pdf') : ('export.xlsx'); //Cannot get content-disposition header...
         // this is necessary as link.click() does not work on the latest firefox
         link.dispatchEvent(
           new MouseEvent('click', {
@@ -60,7 +62,7 @@ export class ExportComponent implements OnInit {
           })
         );
 
-        setTimeout(function() {
+        setTimeout(function () {
           // For Firefox it is necessary to delay revoking the ObjectURL
           window.URL.revokeObjectURL(data);
           link.remove();

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { PieChartRoutingModule } from './pie-chart-routing.module';
+import {PieChartRoutingModule} from './pie-chart-routing.module';
 
 
 @NgModule({
@@ -11,4 +11,5 @@ import { PieChartRoutingModule } from './pie-chart-routing.module';
     PieChartRoutingModule
   ]
 })
-export class PieChartModule { }
+export class PieChartModule {
+}

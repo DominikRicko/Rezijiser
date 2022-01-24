@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
 import {Subject} from 'rxjs';
-import { BillBuilder } from '../../../_model/BillBuilder';
+import {BillBuilder} from '../../../_model/BillBuilder';
 import {Bill} from '../../../_model/Bill';
 
 @Component({
@@ -18,7 +18,8 @@ export class StatsComponent implements OnInit {
   avgPerType = [];
   numOfAllBills = 0;
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService) {
+  }
 
   ngOnInit(): void {
     this.update.subscribe(response => {

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from './token-storage.service';
-import { Bill } from '../_model/Bill';
+import {Bill} from '../_model/Bill';
 
 const API_URL = 'http://localhost:8080/e/api/v1/';
 
@@ -13,7 +13,8 @@ const API_URL = 'http://localhost:8080/e/api/v1/';
 })
 export class BillService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  }
 
   getAll(type: string): Observable<Bill[]> {
     const httpOptions = {

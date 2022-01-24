@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+/* eslint-disable @typescript-eslint/naming-convention */
+import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TokenStorageService} from './token-storage.service';
@@ -11,7 +12,8 @@ const API_URL = 'http://localhost:8080/e/api/v1/notification';
 })
 export class NotificationService {
 
-  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) {
+  }
 
   getAll(): Observable<Notification[]> {
     const httpOptions = {

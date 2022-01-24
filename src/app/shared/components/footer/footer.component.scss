@@ -1,37 +1,37 @@
-:host{
-    order: 0;
-    height: 50px;
+:host {
+  order: 0;
+  height: 50px;
 }
 
 footer {
-    width: 100%;
-    padding: 10px;
+  width: 100%;
+  padding: 10px;
 }
 
 footer h4 {
-    padding-bottom: 5px;
+  padding-bottom: 5px;
 }
 
 footer a {
-    color: #757575;
+  color: #757575;
 }
 
 footer a:hover {
-    color: #4267b2;
+  color: #4267b2;
 }
 
 .copyright-text span,
 .footer-link a {
-    color: #858585;
-    font-size: 12px;
-    font-weight: 500;
+  color: #858585;
+  font-size: 12px;
+  font-weight: 500;
 }
 
-.copyright-text{
-    display: flex;
-    justify-content: center;
+.copyright-text {
+  display: flex;
+  justify-content: center;
 }
 
 .footer-copyright {
-    padding-left: 0 !important;
+  padding-left: 0 !important;
 }

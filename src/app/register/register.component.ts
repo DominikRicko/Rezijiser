@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
     password: this.password
   });
 
-  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {}
+  constructor(private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
   }

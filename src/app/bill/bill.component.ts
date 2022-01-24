@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {BillService} from '../_services/bill.service';
 import {DatePipe} from '@angular/common';
 import {DataService} from '../_services/data.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Bill } from '../_model/Bill';
-import { BillBuilder } from '../_model/BillBuilder';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Bill} from '../_model/Bill';
+import {BillBuilder} from '../_model/BillBuilder';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
 
@@ -37,7 +37,7 @@ export class BillComponent implements OnInit {
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: boolean,
   ) {
-      this.isEdit = data;
+    this.isEdit = data;
   }
 
   ngOnInit(): void {
@@ -62,22 +62,24 @@ export class BillComponent implements OnInit {
     if (!this.isEdit) {
       this.billService.saveBill(newBill, this.bill.type).subscribe(
         (data) => {
-          this.router.navigate(['detail'], { queryParams: { type: this.bill.type } });
-      },
-      (error) => {
+          this.router.navigate(['detail'], {queryParams: {type: this.bill.type}});
+        },
+        (error) => {
           this.snackBar.open('Greška prilikom pravljenja računa.', null, {duration: 5000});
-          },
-      () => {
+        },
+        () => {
           this.snackBar.open('Uspješno spremljen račun.', null, {duration: 5000});
-          this.dialogRef.close();}
+          this.dialogRef.close();
+        }
       );
     } else {
       this.billService.updateBill(newBill, this.bill.type).subscribe(
         (data) => {
-        this.router.navigate(['detail'], { queryParams: { type: this.bill.type }}); },
+          this.router.navigate(['detail'], {queryParams: {type: this.bill.type}});
+        },
         (error) => {
           this.snackBar.open('Greška prilikom ažuriranja računa.', null, {duration: 5000});
-          },
+        },
         () => {
           this.snackBar.open('Uspješno ažuriran račun.', null, {duration: 5000});
           this.dialogRef.close();

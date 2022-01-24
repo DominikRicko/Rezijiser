@@ -29,13 +29,17 @@
             <mat-form-field class="form-input fixed-width">
               <mat-date-range-input [rangePicker]="dateFilterPicker">
                 <input matStartDate formControlName="startingDate" placeholder="Od" [(ngModel)]="startingDate">
-                <input matEndDate formControlName="endingDate" placeholder="Do" [required]="startingDate ? true : null" [(ngModel)]="endingDate">
+                <input matEndDate formControlName="endingDate" placeholder="Do" [required]="startingDate ? true : null"
+                       [(ngModel)]="endingDate">
               </mat-date-range-input>
               <mat-datepicker-toggle matSuffix [for]="dateFilterPicker"></mat-datepicker-toggle>
               <mat-date-range-picker #dateFilterPicker></mat-date-range-picker>
             </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="endingDate ? null : true" (click)="filterRefreshData()" class="button-spacing"> Filtriraj </button>
-            <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter </button>
+            <button mat-raised-button color="primary" [disabled]="endingDate ? null : true"
+                    (click)="filterRefreshData()" class="button-spacing"> Filtriraj
+            </button>
+            <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter
+            </button>
           </form>
         </mat-card-content>
       </mat-card>
