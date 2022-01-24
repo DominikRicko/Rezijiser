@@ -3,6 +3,7 @@ import {DataService} from '../../../_services/data.service';
 import {Subject} from 'rxjs';
 import {BillBuilder} from '../../../_model/BillBuilder';
 import {Bill} from '../../../_model/Bill';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-stats',
@@ -17,6 +18,7 @@ export class StatsComponent implements OnInit {
   avgAllBills = 0;
   avgPerType = [];
   numOfAllBills = 0;
+  datePipe = new DatePipe('en-US');
 
   constructor(public dataService: DataService) {
   }
