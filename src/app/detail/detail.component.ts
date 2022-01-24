@@ -3,7 +3,7 @@ import {MatSort, MatSortable} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {BillService} from '../_services/bill.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {DataService} from '../_services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
@@ -31,7 +31,6 @@ export class DetailComponent implements OnInit {
     private billService: BillService,
     private route: ActivatedRoute,
     public dataService: DataService,
-    private router: Router,
     public dialog: MatDialog,
     formBuilder: FormBuilder
   ) {

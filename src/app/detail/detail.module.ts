@@ -13,13 +13,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import {CustomDatePipe} from '../_helpers/customDate.pipe';
+import { HelperModule } from '../_helpers/helperModule';
 
 @NgModule({
-  declarations: [DetailComponent, CustomDatePipe],
-  exports: [
-    CustomDatePipe
-  ],
+  declarations: [DetailComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -33,7 +30,8 @@ import {CustomDatePipe} from '../_helpers/customDate.pipe';
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    HelperModule
   ]
 })
 export class DetailModule {

@@ -150,11 +150,11 @@ export class HomeComponent implements OnInit {
 
   getAverageByBillType(startingDate: Date, endingDate: Date): { value: string; name: string }[] {
     const cost = [];
-    let counter = 0;
     this.dataService.bills.forEach((bills, index) => {
       if (bills.length === 0) {
         return;
       }
+      let counter = 0;
       let avg = 0;
       bills.forEach((bill) => {
         if (startingDate != null && endingDate != null) {

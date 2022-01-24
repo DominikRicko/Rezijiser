@@ -61,9 +61,9 @@ export class BarChartComponent implements OnInit {
             trigger: 'item',
             formatter: (params) => {
               if (data.length > 0 && data[0].date) {
-                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK<br/>Datum: ${params.data.date}`;
+                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value} HRK<br/>Datum: ${params.data.date}`;
               } else {
-                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value}HRK`;
+                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value} HRK`;
               }
             }
           },

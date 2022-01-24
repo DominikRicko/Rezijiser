@@ -19,6 +19,7 @@ import {BillModule} from './bill/bill.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataService} from './_services/data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HelperModule } from './_helpers/helperModule';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,7 +36,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     ExportModule,
     BillModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HelperModule
   ],
   providers: [AuthGuard, DataService, MatSnackBar],
   bootstrap: [AppComponent]
