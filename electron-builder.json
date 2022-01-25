@@ -20,22 +20,30 @@
     }
   ],
   "win": {
-    "icon": "dist/assets/icons",
+    "appId": "Rezijiser",
+    "icon": "dist/assets/icons/favicon.png",
     "target": [
-      "portable"
+      "portable",
+      "nsis"
     ]
   },
   "portable": {
     "splashImage": "dist/assets/icons/electron.bmp"
   },
+  "nsis": {
+    "oneClick": false,
+    "installerIcon": "dist/assets/icons/favicon.ico",
+    "uninstallerIcon": "dist/assets/icons/favicon.ico",
+    "allowToChangeInstallationDirectory": true
+  },
   "mac": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icons/favicon.png",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist/assets/icons",
+    "icon": "dist/assets/icons/favicon.png",
     "target": [
       "AppImage"
     ]

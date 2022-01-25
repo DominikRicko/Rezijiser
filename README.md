@@ -1,3 +1,11 @@
+# Rezijiser
+
+Rezijiser is an application used to manage your household bills.
+
+Before uploading this application to a server, you MUST edit API_URL/AUTH_URLs in src/app/_services/ files for the app to work.
+
+# Angular Electron Template
+
 [![Angular Logo](https://www.vectorlogo.zone/logos/angular/angular-icon.svg)](https://angular.io/) [![Electron Logo](https://www.vectorlogo.zone/logos/electronjs/electronjs-icon.svg)](https://electronjs.org/)
 
 ![Maintained][maintained-badge]

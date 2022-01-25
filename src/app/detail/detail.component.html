@@ -1,7 +1,92 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.DETAIL.TITLE' | translate }}
-  </h1>
+<app-header></app-header>
+<div class="fix-container">
+  <app-navigation></app-navigation>
+  <div [className]="'fix-container remove-spacing full-view background background-' + type">
 
-  <a routerLink="/">{{ 'PAGES.DETAIL.BACK_TO_HOME' | translate }}</a>
+    <form [formGroup]="formControl" class="full-row solid-background transparent">
+      <mat-form-field>
+        <mat-label>Rok plaćanja</mat-label>
+        <mat-date-range-input [rangePicker]="pickerPayday">
+          <input matStartDate formControlName="fromDatePayday" placeholder="Od">
+          <input matEndDate formControlName="toDatePayday" placeholder="Do">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="pickerPayday"></mat-datepicker-toggle>
+        <mat-date-range-picker #pickerPayday></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Plaćeno</mat-label>
+        <mat-select formControlName="paid">
+          <mat-option value="Sve"> Sve</mat-option>
+          <mat-option value="Da"> Da</mat-option>
+          <mat-option value="Ne"> Ne</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Datum plaćanja</mat-label>
+        <mat-date-range-input [rangePicker]="pickerPaid">
+          <input matStartDate formControlName="fromDatePaid" placeholder="Od">
+          <input matEndDate formControlName="toDatePaid" placeholder="Do">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="pickerPaid"></mat-datepicker-toggle>
+        <mat-date-range-picker #pickerPaid></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Cijena</mat-label>
+        <input matInput formControlName="cost">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="this.counterType.includes(this.type)">
+        <mat-label>Potrošnja</mat-label>
+        <input matInput formControlName="counter">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="filter()" class="button-spacing"> Filtriraj</button>
+      <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter</button>
+    </form>
+
+    <mat-table matSort [dataSource]="dataSource" class="full-table transparent">
+      <ng-container matColumnDef="payday">
+        <mat-header-cell mat-sort-header="payday" *matHeaderCellDef> Rok plaćanja</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.payday | customFormat}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="paid">
+        <mat-header-cell mat-sort-header="paid" *matHeaderCellDef> Plaćeno</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ isPaid(row.datePaid) }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="datePaid">
+        <mat-header-cell mat-sort-header="datePaid" *matHeaderCellDef> Datum plaćanja</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.datePaid | customFormat }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="cost">
+        <mat-header-cell mat-sort-header="cost" *matHeaderCellDef> Cijena</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="counter">
+        <mat-header-cell mat-sort-header="counter" *matHeaderCellDef> Potrošnja</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.counter}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <i (click)="delete(row)" class="fas fa-trash fa-lg button-spacing point"></i>
+          <i (click)="update(row)" class="fas fa-edit fa-lg button-spacing point"></i>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Header and Row Declarations -->
+      <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons class="transparent"></mat-paginator>
+
+  </div>
 </div>
+<app-footer></app-footer>

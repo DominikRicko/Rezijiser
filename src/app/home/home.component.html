@@ -1,7 +1,78 @@
-<div class="container">
-  <h1 class="title">
-    {{ 'PAGES.HOME.TITLE' | translate }}
-  </h1>
+<app-header></app-header>
+<div class="fix-container">
+  <app-navigation></app-navigation>
+  <div class="container row">
 
-  <a routerLink="/detail">{{ 'PAGES.HOME.GO_TO_DETAIL' | translate }}</a>
+    <div class="col-5 colfix">
+      <mat-card class="card">
+        <mat-card-title>Ukupni troškovi</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [data]="sumData"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-5 colfix">
+      <mat-card class="card">
+        <mat-card-title>Ukupni troškovi</mat-card-title>
+        <mat-card-content>
+          <app-pie-chart [data]="sumData"></app-pie-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-2 colfix">
+      <mat-card class="card">
+        <mat-card-title>Datum</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="formControl">
+            <mat-form-field class="form-input fixed-width">
+              <mat-date-range-input [rangePicker]="dateFilterPicker">
+                <input matStartDate formControlName="startingDate" placeholder="Od" [(ngModel)]="startingDate">
+                <input matEndDate formControlName="endingDate" placeholder="Do" [required]="startingDate ? true : null"
+                       [(ngModel)]="endingDate">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="dateFilterPicker"></mat-datepicker-toggle>
+              <mat-date-range-picker #dateFilterPicker></mat-date-range-picker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" [disabled]="endingDate ? null : true"
+                    (click)="filterRefreshData()" class="button-spacing"> Filtriraj
+            </button>
+            <button mat-raised-button color="accent" (click)="resetFilter()" class="button-spacing"> Očisti filter
+            </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Najmanji račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [data]="minData"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Najveći račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [data]="maxData"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="col-4 colfix">
+      <mat-card class="card">
+        <mat-card-title>Prosječni račun</mat-card-title>
+        <mat-card-content>
+          <app-bar-chart [data]="avgData"></app-bar-chart>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- <app-stats class="col-12 card"></app-stats> -->
+  </div>
 </div>
+<app-footer></app-footer>
