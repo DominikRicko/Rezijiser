@@ -10,7 +10,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
-import { HelperModule } from '../_helpers/helper.module';
 
 @NgModule({
   declarations: [ExportComponent],
@@ -24,8 +23,7 @@ import { HelperModule } from '../_helpers/helper.module';
     MatSelectModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatDialogModule,
-    HelperModule
+    MatDialogModule
   ]
 })
 export class ExportModule {

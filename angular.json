@@ -10,6 +10,9 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
+      "i18n": {
+        "sourceLocale": "hr-HR"
+      },
       "schematics": {
         "@schematics/angular:application": {
           "strict": true

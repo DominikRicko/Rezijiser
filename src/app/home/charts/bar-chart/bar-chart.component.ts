@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
 import {Observable} from 'rxjs';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class BarChartComponent implements OnInit {
 
-  @Input() data: Observable<{ value: string; name: string; date?: string }[]>;
+  @Input() data: Observable<{ value: string; name: string; date?: Date }[]>;
   options: any;
 
   constructor(public dataService: DataService) {
@@ -61,7 +62,8 @@ export class BarChartComponent implements OnInit {
             trigger: 'item',
             formatter: (params) => {
               if (data.length > 0 && data[0].date) {
-                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value} HRK<br/>Datum: ${params.data.date}`;
+                // eslint-disable-next-line max-len
+                return `${params.seriesName}<br/>${params.data.name}: ${params.data.value} HRK<br/>Datum: ${formatDate(new Date(params.data.date), 'd. MMM. yyyy.', 'hr-HR')}`;
               } else {
                 return `${params.seriesName}<br/>${params.data.name}: ${params.data.value} HRK`;
               }

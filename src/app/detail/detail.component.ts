@@ -8,7 +8,6 @@ import {DataService} from '../_services/data.service';
 import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {DatePipe} from '@angular/common';
 import {Bill} from '../_model/bill';
 
 @Component({
@@ -25,7 +24,6 @@ export class DetailComponent implements OnInit {
   dataSource: MatTableDataSource<Bill>;
   type: string;
   formControl: FormGroup;
-  datePipe = new DatePipe('en-US');
 
   constructor(
     private billService: BillService,
@@ -72,15 +70,15 @@ export class DetailComponent implements OnInit {
             filter.fromDatePaid = filter.toDatePaid;
           }
           const payday = (!filter.fromDatePayday) ||
-            (row.payday >= this.formatDate(filter.fromDatePayday) &&
-              row.payday <= this.formatDate(filter.toDatePayday));
+            (new Date(row.payday) >= (filter.fromDatePayday) &&
+              new Date(row.payday) <= (filter.toDatePayday));
           const paid = !filter.paid ||
-            (filter.paid === 'Ne' && row.datePaid === null) ||
-            (filter.paid === 'Da' && row.datePaid !== null) ||
+            (filter.paid === 'Ne' && new Date(row.datePaid) === null) ||
+            (filter.paid === 'Da' && new Date(row.datePaid) !== null) ||
             filter.paid === 'Sve';
           const datePaid = !filter.fromDatePaid ||
-            (row.datePaid >= this.formatDate(filter.fromDatePaid) &&
-              row.datePaid <= this.formatDate(filter.toDatePaid));
+            (new Date(row.datePaid) >= (filter.fromDatePaid) &&
+              new Date(row.datePaid) <= (filter.toDatePaid));
           const cost = !filter.cost || row.cost.includes(filter.cost);
           const counter = !filter.counter || row.counter.includes(filter.counter);
           return payday && paid && cost && counter && datePaid;
@@ -134,8 +132,5 @@ export class DetailComponent implements OnInit {
     this.dataSource.filter = this.formControl.value;
   }
 
-  private formatDate(date) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
-  }
 }
 

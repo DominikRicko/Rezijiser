@@ -1,4 +1,4 @@
-import { enableProdMode } from '@angular/core';
+import {enableProdMode, LOCALE_ID} from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -10,6 +10,7 @@ if (APP_CONFIG.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule, {
-    preserveWhitespaces: false
+    preserveWhitespaces: false,
+    providers: [{provide: LOCALE_ID, useValue: 'hr-HR' }]
   })
   .catch(err => console.error(err));

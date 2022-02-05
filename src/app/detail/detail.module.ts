@@ -13,7 +13,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import { HelperModule } from '../_helpers/helper.module';
 
 @NgModule({
   declarations: [DetailComponent],
@@ -30,8 +29,7 @@ import { HelperModule } from '../_helpers/helper.module';
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatButtonModule,
-    HelperModule
+    MatButtonModule
   ]
 })
 export class DetailModule {

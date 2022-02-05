@@ -1,3 +1,11 @@
+<mat-card *ngIf="notificationsUnchecked.length === 0"
+          class="notification-card point">
+  <mat-card-title class="title">Nema obavijesti</mat-card-title>
+  <mat-card-subtitle class="subtitle">{{currentDate | date}}</mat-card-subtitle>
+  <mat-card-content>
+    <p class="text">U ovom trenutku nema obavijesti.</p>
+  </mat-card-content>
+</mat-card>
 <mat-card *ngFor="let notification of notificationsUnchecked"
           class="{{notification.type.toLowerCase()}} notification-card point"
           (click)="checkNotification(notification.id)">

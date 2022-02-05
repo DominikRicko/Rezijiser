@@ -50,7 +50,7 @@
     <mat-table matSort [dataSource]="dataSource" class="full-table transparent">
       <ng-container matColumnDef="payday">
         <mat-header-cell mat-sort-header="payday" *matHeaderCellDef> Rok plaćanja</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.payday | customFormat}} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.payday | date }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="paid">
@@ -60,7 +60,7 @@
 
       <ng-container matColumnDef="datePaid">
         <mat-header-cell mat-sort-header="datePaid" *matHeaderCellDef> Datum plaćanja</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.datePaid | customFormat }} </mat-cell>
+        <mat-cell *matCellDef="let row"> {{ row.datePaid | date }} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="cost">

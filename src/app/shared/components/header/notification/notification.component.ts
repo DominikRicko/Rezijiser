@@ -9,6 +9,7 @@ import {NotificationService} from '../../../../_services/notification.service';
 })
 export class NotificationComponent implements OnInit {
 
+  currentDate;
   notificationsAll: Notification[] = [];
   notificationsUnchecked: Notification[] = [];
 
@@ -20,6 +21,7 @@ export class NotificationComponent implements OnInit {
   }
 
   refresh() {
+    this.currentDate = new Date();
     this.notificationService.getAll().subscribe((data) => {
       this.notificationsAll = data;
       this.notificationsUnchecked = data.filter((notification) => notification.checked === false);

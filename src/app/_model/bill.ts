@@ -1,7 +1,7 @@
 export interface Bill {
   identificator: number;
-  payday: string;
-  datePaid?: string;
+  payday: Date;
+  datePaid?: Date;
   cost: string;
   type?: string;
   counter?: string;

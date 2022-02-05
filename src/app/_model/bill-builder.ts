@@ -3,8 +3,8 @@ import {Bill} from './bill';
 export class BillBuilder {
 
   private identificator: number;
-  private payday: string;
-  private datePaid: string;
+  private payday: Date;
+  private datePaid: Date;
   private cost: string;
   private type: string;
   private counter: string;
@@ -31,21 +31,21 @@ export class BillBuilder {
     return this.identificator;
   }
 
-  public setPayday(payday: string): BillBuilder {
+  public setPayday(payday: Date): BillBuilder {
     this.payday = payday;
     return this;
   }
 
-  public getPayday(): string {
+  public getPayday(): Date {
     return this.payday;
   }
 
-  public setDatePaid(datePaid: string): BillBuilder {
+  public setDatePaid(datePaid: Date): BillBuilder {
     this.datePaid = datePaid;
     return this;
   }
 
-  public getDatePaid(): string {
+  public getDatePaid(): Date {
     return this.datePaid;
   }
 
