@@ -1,4 +1,4 @@
-import {Bill} from './Bill';
+import {Bill} from './bill';
 
 export class BillBuilder {
 

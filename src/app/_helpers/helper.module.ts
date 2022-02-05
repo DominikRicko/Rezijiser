@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CustomDatePipe } from './customDate.pipe';
+import { CustomDatePipe } from './custom-date.pipe';
 
 @NgModule({
     declarations: [CustomDatePipe],

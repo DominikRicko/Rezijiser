@@ -19,7 +19,7 @@ import {BillModule} from './bill/bill.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DataService} from './_services/data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { HelperModule } from './_helpers/helperModule';
+import { HelperModule } from './_helpers/helper.module';
 
 @NgModule({
   declarations: [AppComponent],

@@ -4,8 +4,8 @@ import {BillService} from '../_services/bill.service';
 import {DatePipe} from '@angular/common';
 import {DataService} from '../_services/data.service';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {Bill} from '../_model/Bill';
-import {BillBuilder} from '../_model/BillBuilder';
+import {Bill} from '../_model/bill';
+import {BillBuilder} from '../_model/bill-builder';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -24,9 +24,9 @@ export class BillComponent implements OnInit {
   formControl: FormGroup = new FormGroup({
     payday: new FormControl('', [Validators.required]),
     datePaid: new FormControl(),
-    cost: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999)]),
+    cost: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999), Validators.pattern(new RegExp(/^[1-9]\d*(\.\d+)?$/))]),
     type: new FormControl('', [Validators.required]),
-    counter: new FormControl('', [Validators.min(0), Validators.max(1000)])
+    counter: new FormControl('', [Validators.min(0), Validators.max(1000), Validators.pattern(new RegExp(/^[1-9]\d*(\.\d+)?$/))])
   });
 
   constructor(
@@ -42,7 +42,7 @@ export class BillComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.isEdit) {
-      this.bill = this.dataService.bill;
+      this.bill = JSON.parse(JSON.stringify(this.dataService.bill));
       this.dataService.bill = BillBuilder.build();
     }
   }

@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { CustomDatePipe } from '../_helpers/customDate.pipe';
+import { CustomDatePipe } from '../_helpers/custom-date.pipe';
 import {ExportService} from '../_services/export.service';
 
 @Component({

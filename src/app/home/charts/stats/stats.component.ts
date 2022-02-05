@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DataService} from '../../../_services/data.service';
 import {Subject} from 'rxjs';
-import {BillBuilder} from '../../../_model/BillBuilder';
-import {Bill} from '../../../_model/Bill';
+import {BillBuilder} from '../../../_model/bill-builder';
+import {Bill} from '../../../_model/bill';
 import { DatePipe } from '@angular/common';
 
 @Component({

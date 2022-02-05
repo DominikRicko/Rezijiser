@@ -1,4 +1,4 @@
-import {Bill} from '../_model/Bill';
+import {Bill} from '../_model/bill';
 
 export class DataService {
   public bill: Bill;

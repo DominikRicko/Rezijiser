@@ -9,7 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {BillComponent} from '../bill/bill.component';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {Bill} from '../_model/Bill';
+import {Bill} from '../_model/bill';
 
 @Component({
   selector: 'app-detail',

@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from './token-storage.service';
-import {Bill} from '../_model/Bill';
+import {Bill} from '../_model/bill';
 
 const API_URL = 'http://localhost:8080/e/api/v1/';
 
