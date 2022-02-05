@@ -24,6 +24,7 @@ export class BillComponent implements OnInit {
   formControl: FormGroup = new FormGroup({
     payday: new FormControl('', [Validators.required]),
     datePaid: new FormControl(),
+    // eslint-disable-next-line max-len
     cost: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9999), Validators.pattern(new RegExp(/^[1-9]\d*(\.\d+)?$/))]),
     type: new FormControl('', [Validators.required]),
     counter: new FormControl('', [Validators.min(0), Validators.max(1000), Validators.pattern(new RegExp(/^[1-9]\d*(\.\d+)?$/))])
@@ -52,9 +53,12 @@ export class BillComponent implements OnInit {
 
     newBill.identificator = this.bill.identificator;
     newBill.cost = this.bill.cost;
-    newBill.payday = this.bill.payday;
-    newBill.datePaid = this.bill.datePaid;
-
+    if (this.bill.payday != null) {
+      newBill.payday = new Date(new Date(this.bill.payday).getTime() + 3600 * 1000);
+    }
+    if (this.bill.datePaid != null) {
+      newBill.datePaid = new Date(new Date(this.bill.datePaid).getTime() + 3600 * 1000);
+    }
     if (this.counterType.includes(this.bill.type)) {
       newBill.counter = this.bill.counter;
     }
