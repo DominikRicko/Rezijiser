@@ -32,8 +32,7 @@ export class PieChartComponent implements OnInit {
         {
           name: 'Udio',
           type: 'pie',
-          radius: [30, 110],
-          roseType: 'area',
+          radius: [0, 110],
           data: []
         }
       ]
@@ -62,8 +61,14 @@ export class PieChartComponent implements OnInit {
             {
               name: 'Udio',
               type: 'pie',
-              radius: [30, 110],
-              roseType: 'area',
+              radius: [5, 110],
+              label: {
+                alignTo: 'edge',
+                edgeDistance: '10%'
+              },
+              labelLine: {
+                length: 20
+              },
               data
             }
           ]
