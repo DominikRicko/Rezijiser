@@ -53,7 +53,6 @@ export class DetailComponent implements OnInit {
       }
       this.billService.getAll(this.type).subscribe((data) => {
         this.dataSource = new MatTableDataSource<Bill>(data);
-        console.log(data);
         this.sort.sort(({id: 'payday', start: 'desc'} as MatSortable));
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
